@@ -1,0 +1,235 @@
+.post {
+    border-radius: 10px;
+    max-width: 50%;
+    padding: 5px;
+    margin: auto;
+    border: 1px solid black;
+    justify-content: center;
+    align-items: center;
+    box-shadow: rgba(21, 25, 29, .1) 5px 5px 0;
+}
+h2 {
+    color: red;
+  }
+.post .deleteBtn,.post .upvoteBtn,.post .downvoteBtn {
+  position: relative;
+}
+button{
+  width: 40px;
+    align-items: center;
+    appearance: none;
+    background-color: dodgerblue;
+    background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
+    background-size: calc(100% + 20px) calc(100% + 20px);
+    border-radius: 7px;
+    border-width: 0;
+    box-shadow: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-flex;
+    font-family: CircularStd, sans-serif;
+    font-size: 1rem;
+    height: 25px;
+    justify-content: center;
+    line-height: 0.8;
+    padding: 6px 10px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color .2s, background-position .2s;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: top;
+    white-space: nowrap;
+}
+
+hr {
+  border:10px;
+  height: 20px;
+  width: 100%;
+	height: 50px;
+	margin-top: 20px;
+	border-bottom: 1px solid #1f1209;
+	box-shadow: 20px 20px 20px -20px #333;
+  margin: -40px auto 10px; 
+}
+.post b{
+  background-color: orange;
+  border: none;
+  color: black;
+  padding: 4px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 10px;
+}
+
+.post h3{
+  background-color: gray;
+  padding: 10px;
+  color: white;
+  min-width: 200px;
+}
+.post strong{
+  display: inline-block;
+    max-width: 525px;
+}
+
+.post .tags{
+  background-color: lightgrey;
+}
+.upvoteBtn button{
+  position: absolute;
+  right: 0;
+  width: 100px;
+    height: 25px;
+    background-color: #2ea44f;
+    background-image: linear-gradient(1deg, green, #2ea44f 99%);
+    font-weight: 700;
+}
+.downvoteBtn button{
+  position: absolute;
+  right: 0;
+  top: 30px;
+  width: 100px;
+    height: 25px;
+    background-color: red;
+    background-image: linear-gradient(1deg, darkred, red 99%);
+    font-weight: 700;
+}
+.deleteBtn button{
+  position: absolute;
+  right: 0;
+  top: -113px;
+  width: 120px;
+    height: 25px;
+    background-color: red;
+    background-image: linear-gradient(1deg, darkred, red 99%);
+    font-weight: 700;
+}
+
+.filterArea button[type="submit"],.commentInput button[type="submit"]{
+  width: 150px;
+    height: 50px;
+    background-color: #2ea44f;
+    background-image: linear-gradient(1deg, green, #2ea44f 99%);
+    font-weight: 700;
+}
+.filterArea button{
+  width: 180px;
+  background-color: red;
+  background-image: linear-gradient(1deg, darkred, red 99%)
+}
+.comment{
+  background-color: #aaa;
+  border: none;
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  text-decoration: none;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 10px;
+}
+
+
+form[action="process_post.php"] button[type="submit"]{
+  width: 200px;
+    height: 60px;
+  background-color: #2ea44f;
+    background-image: linear-gradient(1deg, green, #2ea44f 99%);
+    font-weight: 700;
+}
+
+form input[type="file"]{
+  background-color: dodgerblue;
+  border: none;
+  color: black;
+  padding: 3px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 10px;
+}
+form input[type="text"]{
+  background-color: dodgerblue;
+  border: none;
+  color: black;
+  padding: 3px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 10px;
+}
+::placeholder{
+  color: wheat;
+}
+form textarea{
+  background-color: dodgerblue;
+  border: none;
+  color: black;
+  padding: 3px;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  border-radius: 10px;
+}
+
+input[type="text"] {
+  width: 300px;
+}
+
+textarea {
+  width: 300px;
+  height: 100px;
+}
+
+h2 {
+  position: relative;
+  color: white; /* Set the text color for the heading */
+  padding-left: 5px;
+}
+
+h2::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%; /* Set the width to 100% of the viewport width */
+  height: 130%; /* Set the height to 100% */
+  background-color: rgb(114, 79, 184); /* Set the background color for the band */
+  z-index: -1; /* Position the band behind the heading */
+}
+
+label {
+  display: inline-block;
+  position: relative;
+  padding: 4px;
+  color: #FFF;
+}
+
+label::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0%;
+  
+  width: 350px;
+  height: 100%;
+  background-color:#707070;
+  border-radius: 10px;
+  z-index: -1;
+}
+video, iframe{
+  width: 100%;
+}
+img{
+  width: 100%;
+}
