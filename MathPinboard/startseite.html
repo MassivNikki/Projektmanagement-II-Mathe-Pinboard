@@ -2,13 +2,35 @@
 	<head>
 		<title>Rollenwahl</title>
 		<style>
-			h1 {color:blue; font-size:14px;}
+			.imgcontainer1 {
+				float: left;
+				width: 49%;
+				padding: 5px;
+			}
+			.imgcontainer2 {
+				float: right;
+				width: 49%;
+				padding: 5px;
+			}
+			.images {
+				padding: 5px;
+			}
 		</style>
 	</head>
-	<body>
+	<body style="background-color:black;">
 		<form>
-			<a href="startseite_student.html"><img src="student.jpg" alt="Student"></a>
-			<a href="startseite_dozent.html"><img src="dozent.jpg" alt="Dozent"></a>
+			<div class="images">
+				<a href="startseite_student.html">
+					<div class="imgcontainer1">
+						<img src="student.jpg" alt="Student">
+					</div>
+				</a>
+				<a href="startseite_dozent.html">
+					<div class="imgcontainer2">
+						<img src="dozent.jpg" alt="Dozent">
+					</div>
+				</a>
+			</div>
 		</form>
 	</body>
 </html>
