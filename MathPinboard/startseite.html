@@ -1,36 +1,32 @@
 <html>
-	<head>
-		<title>Rollenwahl</title>
-		<style>
-			.imgcontainer1 {
-				float: left;
-				width: 49%;
-				padding: 5px;
-			}
-			.imgcontainer2 {
-				float: right;
-				width: 49%;
-				padding: 5px;
-			}
-			.images {
-				padding: 5px;
-			}
-		</style>
-	</head>
-	<body style="background-color:black;">
-		<form>
-			<div class="images">
-				<a href="startseite_student.html">
-					<div class="imgcontainer1">
-						<img src="student.jpg" alt="Student">
-					</div>
-				</a>
-				<a href="startseite_dozent.html">
-					<div class="imgcontainer2">
-						<img src="dozent.jpg" alt="Dozent">
-					</div>
-				</a>
-			</div>
-		</form>
-	</body>
+<head>
+    <link rel="stylesheet" href="startseite.css">
+    <title>Rollenwahl</title>
+    <style>
+
+
+    </style>
+</head>
+<body>
+<form>
+    <div class="headline"><h1>Choose a role for further browsing!</h1></div>
+
+    <div class="images">
+
+        <div class="imgcontainer">
+            <h2>Student</h2>
+            <img onclick="location.href='startseite_student.html';" src="student.jpg" alt="Student"
+                 title="Browse website as student">
+        </div>
+
+
+        <div class="imgcontainer">
+            <h2>Professor</h2>
+            <img onclick="location.href='startseite_dozent.html';" src="dozent.jpg" alt="Dozent"
+                 title="Browse website as professor">
+        </div>
+
+    </div>
+</form>
+</body>
 </html>

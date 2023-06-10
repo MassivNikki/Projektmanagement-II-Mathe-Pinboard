@@ -1,23 +1,16 @@
 <html>
 	<head>
 		<title>Student</title>
-		<style>
-			.iframeatbottom {
-				position: fixed;
-				bottom: 10;
-				width: 98%;
-			}
-		</style>
+		<link rel="stylesheet" href="startseite.css">
 	</head>
-	<body>		
-		<a href="topics_student.php">
-			<center>
-				<text>Hier geht es zur Themenseite</text>
-			</center>
-		</a>
-		
-		<div class="iframeatbottom">
-			<iframe src="https://deadsimplechat.com/ZNnKehI3V" width="100%" height="600px"></iframe>
-		</div>
+	<body>
+	<button class="backButton" title="Back to start" onclick="location.href='startseite.html';">Back</button>
+	<div class="topicDiv">
+		<button class="topicButton" onclick="location.href='topics_student.php';">Hier geht es zur Themenseite</button>
+	</div>
+
+	<div class="iframeDiv">
+		<iframe src="https://deadsimplechat.com/ZNnKehI3V"></iframe>
+	</div>
 	</body>
 </html>

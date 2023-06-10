@@ -28,7 +28,7 @@ function newTopic(name, tags, kind, gtk, description) {
             e.innerHTML = e.innerHTML +
                 "<div class='topic " + tags + "'>" +
                 "   <div class='top' id='topicDiv" + name + "'>" +
-                "       <button class='topicName' id='topicNameBtt' title='Go to post' onclick=" + "openPostSite('" + kind + "','" + name + "')>" + newName + "</button>" +
+                "       <button class='topicName' id='topicNameBtt' title='Go to post' onclick=openPostSite('" + kind + "','" + name + "')>" + newName + "</button>" +
                 "           <button class='tagButton' title='Show Tags' onclick=" + "changeTagFieldStatus('tag" + name + "')>#</button>" +
                     "</div>" +
                 "<div ><div style='display: none' class='tagTextField' id='tag" + name + "' >" + tagField + "</div><details open style='display: " + showDesc + "'><summary>Beschreibung</summary>" + description +
@@ -39,6 +39,7 @@ function newTopic(name, tags, kind, gtk, description) {
 }
 
 function openPostSite(level, name) {
+    name = name.replaceAll("_"," ");
     window.open("topics/T" + level + "/" + name + "/anwendung.php", "_self");
 }
 
