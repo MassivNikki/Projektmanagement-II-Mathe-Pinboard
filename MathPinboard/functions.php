@@ -1,89 +1,4 @@
 <?php
-function deleteFolder(string $foldername, string $dir)
-{
-    $handle = opendir($dir);
-    while (($entry = readdir($handle)) !== false) {
-        if ($entry != '.' && $entry != '..' && $entry != '.htaccess') {
-            if ($entry == $foldername) {
-                $folder = $dir . "/" . $foldername;
-                cleanFolder($folder);
-                rmdir($folder);
-            }
-        }
-
-    }
-    closedir($handle);
-}
-
-function cleanFolder(string $dir)
-{
-    $objects = scandir($dir);
-    foreach ($objects as $object) {
-        if ($object != '.' && $object != '..') {
-            unlink($dir . '/' . $object);
-            if (is_dir($object)) {
-                rmdir($dir . '/' . $object);
-            }
-        }
-    }
-}
-
-function drawTopics(string $dir, string $kind)
-{
-    $handle = opendir($dir);
-    while (($entry = readdir($handle)) != false && $kind < 10) {
-        if ($entry != '.' && $entry != '..' && $entry != '.htaccess') {
-            if (is_dir($dir . "/" . $entry)) {
-                if (preg_match("/T\d/", $entry)) {
-                    drawTopics($dir . "/" . $entry, str_replace("T", "", $entry));
-                } else {
-                    $name = "'$entry'";
-                    echo "newTopic(" . $name . ",'" . getFileText($dir, $entry, "tags") . "','"
-                        . $kind . "','" . getFileText($dir, $entry, "GoodToKnow") . "','" . getFileText($dir, $entry, "description") . "');";
-                }
-            }
-        }
-    }
-    closedir($handle);
-}
-
-function drawTableRows(string $dir)
-{
-    $handle = opendir($dir);
-    while (($entry = readdir($handle)) != false) {
-        if ($entry != '.' && $entry != '..' && $entry != '.htaccess') {
-            if (preg_match("/T\d/", $entry)) {
-                echo "newTableRow(" . str_replace("T", "", $entry) . ");";
-            }
-        }
-    }
-}
-
-function getFileText($dir, $entry, $fileName)
-{
-    $File = $dir . "/" . $entry . '/' . $fileName . '.txt';
-    $handle = fopen($File, "r");
-    $size = filesize($File);
-    if ($size > 0) {
-        $text = fread($handle, $size);
-        fclose($handle);
-        return $text;
-    }
-}
-
-
-function createFile($dir, $level, $topicName, $fileName, $content)
-{
-    $path = $dir . '/T' . $level . '/' . $topicName . '/' . $fileName . '.txt';
-    if (is_file($path)) {
-        unlink($path);
-    }
-
-    $newFile = fopen($path, "w");
-    fwrite($newFile, $content);
-    fclose($newFile);
-}
-
 function refreshPost($dir)
 {
     $topicName = "topicName";
@@ -142,6 +57,93 @@ function refreshPost($dir)
 
     }
 }
+function deleteFolder(string $foldername, string $dir)
+{
+    $handle = opendir($dir);
+    while (($entry = readdir($handle)) !== false) {
+        if ($entry != '.' && $entry != '..' && $entry != '.htaccess') {
+            if ($entry == $foldername) {
+                $folder = $dir . "/" . $foldername;
+                cleanFolder($folder);
+                rmdir($folder);
+            }
+        }
 
-//topic button schöner machen, hashtag feld schöner machen, edir funktion
+    }
+    closedir($handle);
+}
+
+function cleanFolder(string $dir)
+{
+    $objects = scandir($dir);
+    foreach ($objects as $object) {
+        if ($object != '.' && $object != '..') {
+            if (is_dir($dir . '/' . $object)) {
+                cleanFolder($dir . '/' . $object);
+                rmdir($dir . '/' . $object);
+            } else {
+                unlink($dir . '/' . $object);
+            }
+
+        }
+    }
+}
+
+function drawTopics(string $dir, string $kind)
+{
+    $handle = opendir($dir);
+    while (($entry = readdir($handle)) != false && $kind < 10) {
+        if ($entry != '.' && $entry != '..' && $entry != '.htaccess') {
+            if (is_dir($dir . "/" . $entry)) {
+                if (preg_match("/T\d/", $entry)) {
+                    drawTopics($dir . "/" . $entry, str_replace("T", "", $entry));
+                } else {
+                    $name = str_replace(" ", "_",$entry);
+                    echo "newTopic('" . $name . "','" . getFileText($dir, $entry, "tags") . "','"
+                        . $kind . "','" . getFileText($dir, $entry, "GoodToKnow") . "','" . getFileText($dir, $entry, "description") . "');\n";
+                }
+            }
+        }
+    }
+    closedir($handle);
+}
+
+function drawTableRows(string $dir)
+{
+    $handle = opendir($dir);
+    while (($entry = readdir($handle)) != false) {
+        if ($entry != '.' && $entry != '..' && $entry != '.htaccess') {
+            if (preg_match("/T\d/", $entry)) {
+                echo "newTableRow(" . str_replace("T", "", $entry) . ");";
+            }
+        }
+    }
+}
+
+function getFileText($dir, $entry, $fileName)
+{
+    $File = $dir . "/" . $entry . '/' . $fileName . '.txt';
+    $handle = fopen($File, "r");
+    $size = filesize($File);
+    if ($size > 0) {
+        $text = fread($handle, $size);
+        fclose($handle);
+        return $text;
+    }
+}
+
+
+function createFile($dir, $level, $topicName, $fileName, $content)
+{
+    $path = $dir . '/T' . $level . '/' . $topicName . '/' . $fileName . '.txt';
+    if (is_file($path)) {
+        unlink($path);
+    }
+
+    $newFile = fopen($path, "w");
+    fwrite($newFile, $content);
+    fclose($newFile);
+}
+
+
 ?>

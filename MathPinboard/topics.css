@@ -5,8 +5,8 @@ body {
 }
 
 .searchBar {
-    width: 200px;
-    height: 25px;
+    width: 300px;
+    height: 30px;
     border-radius: 10px;
     position: sticky;
     top: 10px;
@@ -25,7 +25,7 @@ tr {
     flex-wrap: wrap;
     border-top: 3px solid black;
     border-radius: 5px;
-    box-shadow: 0 -10px 30px -10px #888888;
+    box-shadow: 0 -10px 30px -10px #666;
 }
 
 td {
@@ -108,9 +108,9 @@ details[open] summary {
 
 .addWindow {
     position: fixed;
-    left: 40%;
+    left: 30%;
     top: 10%;
-    width: 450px;
+    min-width: 450px;
     height: 75%;
     background-color: antiquewhite;
     align-items: center;
@@ -162,7 +162,7 @@ textarea {
     margin-top: 20px;
 }
 
-.tagButton, .editBtt, .deleteBtt, .cancelBtt, .addButton, .finishAddBtt, .yes, .no, .topicName {
+.tagButton, .editBtt, .deleteBtt, .cancelBtt, .addButton, .finishAddBtt, .yes, .no, .topicName, .backButton {
     width: 40px;
     align-items: center;
     appearance: none;
@@ -200,8 +200,18 @@ textarea {
     font-weight: 700;
     font-size: 15px;
     background-color: purple;
-    background-image: linear-gradient(1deg, purple, mediumpurple 70%);
+    background-image: linear-gradient(to top left, purple, mediumpurple 70%);
     word-wrap: break-word;
+}
+.backButton{
+    height: 35px;
+    width: 80px;
+    background-color: red;
+    background-image: linear-gradient(to top left, orangered, orange);
+    border-radius: 10px;
+    position: sticky;
+    top: 10px;
+    z-index: 2;
 }
 
 .tagButton {
@@ -212,13 +222,8 @@ textarea {
     width: 100px;
     height: 100px;
     background-color: #2ea44f;
-    background-image: linear-gradient(1deg, green, #2ea44f 99%);
+    background-image: linear-gradient(to top left, darkgreen, #22bd22 99%);
     font-weight: 700;
-}
-
-.addButton:hover {
-    background-image: linear-gradient(1deg, darkgreen, #2ea44f 99%);
-    transform: translate(0, -2px);
 }
 
 .cancelBtt, .yes, .no {
@@ -273,7 +278,7 @@ textarea {
     color: white;
 }
 
-.tagButton:hover, .editBtt:hover, .deleteBtt:hover, .cancelBtt:hover, .finishAddBtt:hover, .yes:hover, .no:hover, .topicName:hover {
+.tagButton:hover, .editBtt:hover, .addButton:hover, .deleteBtt:hover, .cancelBtt:hover, .finishAddBtt:hover, .yes:hover, .no:hover, .topicName:hover, .backButton:hover {
     background-position: -20px -20px;
     transform: translate(0, -2px);
 }

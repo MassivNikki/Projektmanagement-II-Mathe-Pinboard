@@ -10,6 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $picture = $_POST["pictureLink"];
     $videoFile = $_FILES["videoFile"]["name"];
     $tags = $_POST["tags"];
+    $header = $_POST["header"];
 
     $folderPath = './posts/';
 
@@ -148,7 +149,7 @@ $pointsLoaded = (int) $xml->points;
 echo "<b> Points: $pointsLoaded </b>";
     }
     ?>
-    <h3> Post-'.$postNumber.'</h3>
+    <h3> '.$header.'</h3>
     <!-- php form with the file path input and delete button -->
     <div  class="deleteBtn">
     <form method="POST">
@@ -172,7 +173,7 @@ echo "<b> Points: $pointsLoaded </b>";
     ';
     //further string addition stuff
     $phpCode .= "<p><strong>".$name."</strong></p>\n";
-    $phpCode .= "<p>".$text."</p>\n";
+    $phpCode .= "<p class='commentText'>".$text."</p>\n";
     if (!empty($video)) {
         $phpCode .= "<iframe src='".$video."'></iframe>\n";
         $tags .= ",Video";
@@ -253,22 +254,10 @@ if (!file_exists($filePath)) {
         
         // Die Datei schließen
         fclose($file);
-
-        echo "<h2> Der Beitrag wurde erfolgreich gepostet. </h2>";
-    } else {
-        echo "<h2> Fehler, beim öffnen der Post-Datei. </h2>";
     }
-} else {
-    echo "<h2> Fehler, bei den internen Systemen. </h2>";
-    //Der Fehler poppt, wenn die datei bereits existiert, was sie wegen der automatischen Nummerierung nicht sollte
 }
-
-    //Create a link to the main site and print the code and the link
-    $linkBack = "<a href='anwendung.php' target='_self'>Zurück</a><br><br>";
-
-    echo "<br><br><h2> Danke für ihren Post!<br><br> </h2>";
-    include($filePath);
-    echo $linkBack;
+    //Einfach direkt wieder zur anwendung.php; wenn der Benutzer auf dieser Seite rumgurken darf macht das zu viele Probleme.
+    header("Location: anwendung.php");
 
 
 
@@ -282,8 +271,12 @@ if (!file_exists($filePath)) {
 <!DOCTYPE html>
 <html>
 <head>
-    <!--Just a bit of head stuff, to allow for css and similar -->
-    <title>Danke für ihren Post!</title>
-    <link rel="stylesheet" href="../../../postConfirmation.css">
+    <script>
+        // Check if the page is being refreshed
+        if (performance.navigation.type === 1) {
+            // Redirect to a different page
+            window.location.href = "anwendung.php";
+        }
+    </script>
 </head>
 </html>

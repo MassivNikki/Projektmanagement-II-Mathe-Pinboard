@@ -1,8 +1,4 @@
 function newTableRow(rowNum) {
-    let display = "";
-    if (1 == 0) {
-        display = "none";
-    }
     [].forEach.call(document.querySelectorAll('.mainTable'),
         function (e) {
             e.innerHTML += "<tr>" +
@@ -12,31 +8,31 @@ function newTableRow(rowNum) {
 }
 
 function newTopic(name, tags, kind, gtk, description) {
-    let show, desc, tagsArray, tagField = "", tempTags = tags;
+    let showGtk, showDesc, tagsArray, tagField = "", tempTags = tags;
     if (tags.length > 0) {
         tags = tags.replaceAll(",", " ");
         tagsArray = tempTags.split(",");
         //console.log(tagsArray);
-        tagsArray.forEach(element => tagField += "#" + element);
+        tagsArray.forEach(element => tagField += "#" + element + " ");
     }
-    show = "";
-    desc = "<b>Beschreibung</b>";
+    showGtk = "";
     if (gtk.length === 0) {
-        show = "none";
+        showGtk = "none";
     }
     if (description === "") {
-        desc = "";
+        showDesc = "none";
     }
+    let newName = name.replaceAll("_"," ");
     [].forEach.call(document.querySelectorAll('.main' + kind),
         function (e) {
             e.innerHTML = e.innerHTML +
                 "<div class='topic " + tags + "'>" +
                 "   <div class='top' id='topicDiv" + name + "'>" +
-                "       <button class='topicName' id='topicNameBtt' title='Go to post' onclick=" + "openPostSite('" + kind + "','" + name + "')>" + name + "</button>" +
+                "       <button class='topicName' id='topicNameBtt' title='Go to post' onclick=" + "openPostSite('" + kind + "','" + name + "')>" + newName + "</button>" +
                 "           <button class='tagButton' title='Show Tags' onclick=" + "changeTagFieldStatus('tag" + name + "')>#</button>" +
                     "</div>" +
-                "<div ><div style='display: none' class='tagTextField' id='tag" + name + "' >" + tagField + "</div><div class='topicContent'>" + desc + "<br>" + description +
-                "</div><details style='display: " + show + "'><summary>Sollte man wissen!</summary>" + gtk + "</details>" +
+                "<div ><div style='display: none' class='tagTextField' id='tag" + name + "' >" + tagField + "</div><details open style='display: " + showDesc + "'><summary>Beschreibung</summary>" + description +
+                "</details><details style='display: " + showGtk + "'><summary>Sollte man wissen!</summary>" + gtk + "</details>" +
                 "</div>" +
                 "</div>";
         });
@@ -66,12 +62,12 @@ function searchTopic(){
     }
     filter = input.value.toUpperCase();
     divs = document.getElementsByClassName("topic");
-    console.log(filter);
+    //console.log(filter);
     // Loop through all list items, and hide those who don't match the search query
     for (i = 0; i < divs.length; i++) {
         a = divs[i].getElementsByTagName("button")[0];
         tagtext = divs[i].className.substring(5).toUpperCase();
-        console.log(divs[i]);
+        //console.log(divs[i]);
         text = a.innerText;
         txtValue = text.toUpperCase();
         if (txtValue.indexOf(filter) > -1) {
