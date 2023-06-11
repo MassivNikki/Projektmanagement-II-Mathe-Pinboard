@@ -1,9 +1,11 @@
 .imgcontainer {
-    width: 49%;
+    max-width: 400px;
     padding: 5px;
     text-align: center;
+    margin: 10px;
 }
-.headline{
+
+.headline {
     display: flex;
     justify-content: center;
 }
@@ -18,20 +20,22 @@ iframe {
     width: 100%;
     height: 500px;
 }
-.iframeDiv{
+
+.iframeDiv {
     width: 100%;
 }
 
-.topicDiv{
+.topicDiv {
     display: flex;
     justify-content: center;
     min-width: 300px;
 }
-h1{
+
+h1 {
     font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 }
 
-button{
+button {
     width: 40px;
     align-items: center;
     appearance: none;
@@ -61,17 +65,19 @@ button{
     vertical-align: top;
     white-space: nowrap;
 }
+
 button:hover {
     background-position: -20px -20px;
 }
 
-.topicButton{
+.topicButton {
     margin-top: 20px;
     margin-bottom: 20px;
     height: 40px;
     min-width: 250px;
 }
-.backButton{
+
+.backButton {
     height: 35px;
     width: 80px;
     background-color: red;
@@ -81,7 +87,16 @@ button:hover {
     top: 10px;
     z-index: 2;
 }
-img{
+
+img {
     cursor: pointer;
     width: 100%;
+    box-shadow: -50px -50px 0 -40px red,
+    50px 50px 0 -40px red;
+    transition: transform .2s;
+margin-top: 20px;
+}
+
+img:hover {
+    transform: scale(1.1);
 }

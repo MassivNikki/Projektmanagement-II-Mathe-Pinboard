@@ -8,7 +8,7 @@ function newTableRow(rowNum) {
 }
 
 function newTopic(name, tags, kind, gtk, description) {
-    let showGtk, showDesc, tagsArray, tagField = "", tempTags = tags;
+    let showGtk, showDesc, tagsArray, tagField = "", tempTags = tags, showTags;
     if (tags.length > 0) {
         tags = tags.replaceAll(",", " ");
         tagsArray = tempTags.split(",");
@@ -22,6 +22,9 @@ function newTopic(name, tags, kind, gtk, description) {
     if (description === "") {
         showDesc = "none";
     }
+    if(tags.length === 0){
+        showTags = "none";
+    }
     let newName = name.replaceAll("_"," ");
     [].forEach.call(document.querySelectorAll('.main' + kind),
         function (e) {
@@ -29,7 +32,7 @@ function newTopic(name, tags, kind, gtk, description) {
                 "<div class='topic " + tags + "'>" +
                 "   <div class='top' id='topicDiv" + name + "'>" +
                 "       <button class='topicName' id='topicNameBtt' title='Go to post' onclick=openPostSite('" + kind + "','" + name + "')>" + newName + "</button>" +
-                "           <button class='tagButton' title='Show Tags' onclick=" + "changeTagFieldStatus('tag" + name + "')>#</button>" +
+                "           <div class='symbolDiv'><button class='tagButton' title='Show Tags' style='display: " + showTags + "' onclick=" + "changeTagFieldStatus('tag" + name + "')>#</button></div>" +
                     "</div>" +
                 "<div ><div style='display: none' class='tagTextField' id='tag" + name + "' >" + tagField + "</div><details open style='display: " + showDesc + "'><summary>Beschreibung</summary>" + description +
                 "</details><details style='display: " + showGtk + "'><summary>Sollte man wissen!</summary>" + gtk + "</details>" +
