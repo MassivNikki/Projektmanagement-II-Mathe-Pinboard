@@ -211,8 +211,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <?php
 //once again code from the "thema" guy
 $str = dirname(__FILE__);
-$str2 = substr($str, 39);
-echo "<script>changeSiteName('" . $str2 . "');</script>";
+$str2 = explode("\\", $str);
+echo "<script>changeSiteName('" . $str2[count($str2)-1] . "');</script>";
 
 
 //Sort the php files via their point value
