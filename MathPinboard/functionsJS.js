@@ -132,7 +132,7 @@ function openAddWindow(level) {
         function (e) {
             e.innerHTML = e.innerHTML +
                 "<div class='addWindow'><div class='addForm'><form style='width: 100%' method='POST'>" +
-                "Name<br><input class='textFieldAddW' type='text' name='topicName'><br>" +
+                "Name<br><input class='textFieldAddW' type='text' name='topicName' required><br>" +
                 "Dependent topics<br><textarea class='textFieldAddW' name='GoodToKnow' placeholder='These are other topics the Students should know to understand this topic!'></textarea><br>" +
                 "Tags<br><textarea class='textFieldAddW' name='topicTags' placeholder='Please seperate with commas!(i.e. Algebra,Vectors)'></textarea><br>" +
                 "Description<br><textarea class='textFieldAddW' name='topicDescription'></textarea><br>" +
