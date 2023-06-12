@@ -27,9 +27,11 @@ function refreshPost($dir)
                 } else {
                     rename($dir . '/T' . $content . '/' . $oldName, $dir . '/T' . $content . '/' . $topicName);
                 }
-                createFile($dir, $content, $topicName, "tags", $topicTags);
-                createFile($dir, $content, $topicName, "GoodToKnow", $GtK);
-                createFile($dir, $content, $topicName, "Description", $description);
+                if(strlen($topicName) > 0){
+                    createFile($dir, $content, $topicName, "tags", $topicTags);
+                    createFile($dir, $content, $topicName, "GoodToKnow", $GtK);
+                    createFile($dir, $content, $topicName, "Description", $description);
+                }
 
                 header('Location: topics_dozent.php');
                 break;
