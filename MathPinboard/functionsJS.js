@@ -19,7 +19,6 @@ function newTopic(name, tags, kind, gtk, description) {
     if (tags.length > 0) {
         tags = tags.replaceAll(",", " ");
         tagsArray = tempTags.split(",");
-        //console.log(tagsArray);
         tagsArray.forEach(element => tagField += "#" + element + " ");
     }
     showGtk = "";
@@ -162,12 +161,11 @@ function searchTopic() {
     }
     filter = input.value.toUpperCase();
     divs = document.getElementsByClassName("topic");
-    //console.log(filter);
     // Loop through all list items, and hide those who don't match the search query
     for (i = 0; i < divs.length; i++) {
         a = divs[i].getElementsByTagName("button")[0];
         tagtext = divs[i].className.substring(5).toUpperCase();
-        //console.log(divs[i]);
+        
         text = a.innerText;
         txtValue = text.toUpperCase();
         if (txtValue.indexOf(filter) > -1) {
@@ -190,10 +188,9 @@ function searchTag() {
     }
     filter = input.value.toUpperCase();
     divs = document.getElementsByClassName("topic");
-    //console.log(divs);
+   
     // Loop through all list items, and hide those who don't match the search query
     for (i = 0; i < divs.length; i++) {
-        //console.log(divs[i]);
         a = divs[i].getElementsByTagName("button")[0].innerText.toUpperCase();
         text = divs[i].className.substring(5);
         txtValue = text.toUpperCase();
