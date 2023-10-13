@@ -15,16 +15,16 @@
 <input class="searchBar" type="text" id="searchTag" onkeyup="searchTag()" placeholder="Search for Tags"><br><br>
 <?php
 require './functions.php';
-$dir = './topics';
+$dir = './topics';//dieser ordner is auf der selben ebene und beinhaltet alle Objekte und Seiten der einzelnen Themen
 
 $count = iterator_count(new FilesystemIterator($dir));
 refreshPost($dir);
 echo "<table ><tbody class='mainTable'></tbody></table>";
 //print_r($_POST);
 
-echo "<script>";
-echo drawTableRows($dir);
-echo drawTopics($dir, "0");
+echo "<script>";//die ordner im htdocs ordner werden durchgegangen und basierend darauf werden objekte erstellt
+echo drawTableRows($dir);//fügt die Reihen der Seite hinzu
+echo drawTopics($dir, "0");//fügt der koresspondierenden Zeile die jeweiligen Themen hinzu
 echo "</script>";
 
 //abhangigkeitenliste bei jedem topic mit reinpacken, (allgemein in den files suchen und nicht in den klassen)
