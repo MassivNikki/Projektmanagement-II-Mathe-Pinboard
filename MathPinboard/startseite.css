@@ -1,19 +1,21 @@
 .imgcontainer {
     max-width: 400px;
-    padding: 5px;
+    padding: 20px; /* Größere Polsterung */
     text-align: center;
-    margin: 10px;
+    margin: 20px;
 }
 
 .headline {
     display: flex;
     justify-content: center;
+    margin-top: 20px;
 }
 
 .images {
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
+    margin: 20px 0;
 }
 
 iframe {
@@ -28,48 +30,34 @@ iframe {
 .topicDiv {
     display: flex;
     justify-content: center;
-    min-width: 300px;
+    min-width: 320px; /* Breitere Mindestbreite */
+    margin: 20px 0;
 }
 
 h1 {
-    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+    font-family: Arial, sans-serif; /* Modernere Schriftart */
 }
 
-button {
-    width: 40px;
+.button {
+    width: 50px; /* Größere Schaltflächen */
     align-items: center;
     appearance: none;
-    background-color: dodgerblue;
-    background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
-    background-size: calc(100% + 20px) calc(100% + 20px);
-    border-radius: 7px;
-    border-width: 0;
-    box-shadow: none;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    cursor: pointer;
-    display: inline-flex;
-    font-family: CircularStd, sans-serif;
+    background: linear-gradient(45deg, grey, #7845f0);
+    border: none;
+    color: #fff;
+    padding: 12px; /* Größere Polsterung */
+    border-radius: 8px;
     font-size: 1rem;
-    height: 25px;
-    justify-content: center;
-    line-height: 0.8;
-    padding: 6px 10px;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    transition: background-color .2s, background-position .2s;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: top;
-    white-space: nowrap;
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
 }
 
-button:hover {
-    background-position: -20px -20px;
-}
 
+.topicButton:hover {
+    background: #7845f0;
+    color: #fff;
+    transform: scale(1.1);
+}
 .topicButton {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -77,11 +65,14 @@ button:hover {
     min-width: 250px;
 }
 
+.backButton:hover {
+    background: linear-gradient(45deg, orangered, orange);
+    
+    transform: scale(1.1);
+}
 .backButton {
     height: 35px;
     width: 80px;
-    background-color: red;
-    background-image: linear-gradient(to top left, orangered, orange);
     border-radius: 10px;
     position: sticky;
     top: 10px;
@@ -91,10 +82,9 @@ button:hover {
 img {
     cursor: pointer;
     width: 100%;
-    box-shadow: -50px -50px 0 -40px red,
-    50px 50px 0 -40px red;
-    transition: transform .2s;
-margin-top: 20px;
+    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5); /* Roter Schatten */
+    margin-top: 20px;
+    transition: transform 0.2s;
 }
 
 img:hover {
