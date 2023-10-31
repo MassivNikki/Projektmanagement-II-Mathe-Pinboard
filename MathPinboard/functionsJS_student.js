@@ -41,12 +41,14 @@ function newTopic(name, tags, kind, gtk, description) {
         });
 }
 
-function openPostSite(level, name) {
+make
+
+function openPostSite(level, name) {//damit gelangt man zur beitragsseite
     name = name.replaceAll("_"," ");
     window.open("topics/T" + level + "/" + name + "/anwendung.php", "_self");
 }
 
-function changeTagFieldStatus(id) {
+function changeTagFieldStatus(id) {//falls nichts in den tags steht, wird der knopf auch nicht angezeigt
     let e = document.getElementById(id)
     if (e.innerHTML.length > 0) {
         if (e.style.display === "none") {
@@ -85,6 +87,7 @@ function searchTopic(){
 }
 
 function searchTag() {
+
     var input, filter, a, txtValue, text, topicbool = false;
     input = document.getElementById('searchTag');
     topics = document.getElementById('searchTopic');

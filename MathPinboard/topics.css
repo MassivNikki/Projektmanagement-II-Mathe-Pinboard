@@ -101,7 +101,11 @@ details[open] summary {
     margin-bottom: 10px;
 }
 
-.addWindow {
+.topicLink:hover{
+    cursor:pointer;
+}
+
+.addWindow {/* das Fenster nachdem jemand den Add-Knopf gedrückt hat*/
     position: fixed;
     left: 30%;
     top: 10%;
