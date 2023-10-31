@@ -165,7 +165,6 @@ textarea {
 .tagButton, .editBtt, .deleteBtt, .cancelBtt, .addButton, .finishAddBtt, .yes, .no, .topicName, .backButton {
     width: 40px;
     align-items: center;
-    border: 1px solid #007bff;
     border-radius: 3px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     color: #fff;
@@ -209,7 +208,7 @@ textarea {
 .addButton {
     width: 100px;
     height: 100px;
-    background-color: rgb(103, 155, 116);
+    background-color: rgb(96, 221, 127);
     border-radius: 50%;
     font-weight: 700;
     font-size: 24px;
@@ -218,7 +217,7 @@ textarea {
 
 .addButton:hover {
     
-    background-color: rgb(40, 167, 69);
+    background-color: rgb(36, 124, 57);
     transform: scale(1.1);
    color: #fff;
 
