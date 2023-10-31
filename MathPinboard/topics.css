@@ -164,7 +164,7 @@ textarea {
 .tagButton, .editBtt, .deleteBtt, .cancelBtt, .addButton, .finishAddBtt, .yes, .no, .topicName, .backButton {
     width: 40px;
     align-items: center;
-    border-radius: 3px;
+    border-radius: 6px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     color: #fff;
     cursor: pointer;
@@ -183,11 +183,15 @@ textarea {
 .topicName {
     width: auto;
     height: 40px;
-    border-radius: 3px;
     font-weight: 700;
     font-size: 18px;
-    background-color: grey;
+    background-color: rgba(97, 31, 134, 0.281);
     word-wrap: break-word;
+}
+
+.topicName:hover{
+    background-color: rgba(97, 31, 134);
+    transform: scale(1.1);
 }
 
 .backButton {
@@ -205,7 +209,7 @@ textarea {
     padding-top: 10px;
     background-color: rgba(74, 74, 214, 0.582);
 }
-.tagButton :hover{
+.tagButton:hover{
     background-color: rgba(74, 74, 214);
     transform: scale(1.1);
 }
@@ -230,8 +234,8 @@ textarea {
 
 .cancelBtt, .yes, .no {
     width: 80px;
-    background-color: #dc3545;
-    border-radius: 3px;
+    background-color: #dc35467a;
+    border-radius: 6px;
     color: #fff;
 }
 
@@ -278,12 +282,19 @@ textarea {
 }
 
 .editBtt {
-    background-color: #ffc107;
-    color: white;
-    border-radius: 3px;
+    background-color: rgba(255, 193, 7, 0.61);
+    
     padding: 10px 20px;
     text-align: center;
     margin-top: 5px;
+
+}
+
+.editBtt:hover {
+    
+    background-color: rgb(255, 193, 7);
+    transform: scale(1.1);
+   
 
 }
 
