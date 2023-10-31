@@ -56,13 +56,11 @@ function newTopic(name, tags, kind, gtk, description) {//generiert die Objekte f
                 "       <button class='topicName' id='topicNameBtt' title='Go to post' onclick=openPostSite('" + kind + "','" + name + "')>" + newName + "</button>" +//die Beitragsseite öffnet sich beim klicken
                 "       <div class='symbolDiv'>" + "" +
                 "           <form method='POST'>" +
-                            
-                "               <button class='editBtt' title='Edit Content' type='submit' value='" + kind + ",/T" + kind + "/" + newName + "," + newName + "' name='editTopic'>" +//knopf zum bearbeiten des Themas
-                "                   <svg xmlns=\"http://www.w3.org/2000/svg\" height=\"1em\" viewBox=\"0 0 512 512\"><style>svg{fill:#ffffff}</style>" +
-                "                       <path d=\"" + editButtonSymbol + "\"/>" +
-                "                   </svg>" +
+                "               <button class='editBtt' title='Edit Content' type='submit' value='" + kind + ",/T" + kind + "/" + newName + "," + newName + "' name='editTopic'>✎" +//knopf zum bearbeiten des Themas
                 "               </button>" +
+                "               <button class='tagButton' title='Show Tags' style='display: " + showTags + "' onclick=" + "changeTagFieldStatus('tag" + encodeURIComponent(name) + "')>#</button>" +//tag button zum anzeigen der vergebenen tags
                 "               <button type='submit' title='Delete Topic' onclick=" + "openDeleteWindow('" + name + "," + kind + "') class='deleteBtt' >🗑</button>" +//Löschknopf des themas
+               
                 "           </form>" +
                 "       </div>" +
                 "   </div>" +

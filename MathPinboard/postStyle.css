@@ -9,6 +9,7 @@
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
   background-color: #f5f5f5;
   text-align: left;
+  font-family: Arial, sans-serif;
 }
 
 /* Stil für Schaltflächen */
@@ -65,6 +66,7 @@
 .post p {
   max-width: 90%;
   word-break: break-word;
+  font-family: Arial,sans-serif;
 }
 
 /* Stil für Tags */
@@ -104,6 +106,8 @@
   padding: 10px;
   margin-bottom: 20px;
   margin-top: 10px;
+  font-family: Arial,sans-serif;
+
 }
 
 /* Allgemeine Stiländerungen für Formulare */
@@ -115,8 +119,12 @@ form {
 form button[type="submit"] {
   width: 160px;
   height: 50px;
-  background: #2ecc71;
+  background: #029e438c;
   font-weight: 600;
+  border-radius: 10px;
+  border-color:rgba(255, 255, 255, 0);
+  color:white;
+  font-size: 18px;
 }
 
 /* Stil für Datei-Upload-Input */
@@ -124,21 +132,29 @@ form input[type="file"] {
   background-color: #fff;
   border: 1px solid #ccc;
   color: #333;
-  padding: 10px;
+  padding:10px;
   border-radius: 8px;
-  margin: 4px 0;
+  width: 450px;
+  margin: 4px;
+  margin-bottom: 30px;
+
+
 }
 
 /* Stil für Texteingabe-Felder */
 form input[type="text"],
 form textarea {
   background-color: #f5f5f5;
-  border: 1px solid #ccc;
+  border: 1px solid rgba(255, 255, 255, 0);
   color: #333;
   padding: 10px;
   font-size: 16px;
   margin: 4px 0;
   border-radius: 8px;
+  width: 450px;
+  margin: 4px;
+  margin-bottom: 30px;
+ 
 }
 
 ::placeholder {
@@ -164,9 +180,9 @@ h2 {
   top: 0;
   left: 0;
   font-family: Arial, sans-serif;
-  color: #333;
+  color: #ffff;
   width: 100%;
-  background-color: #3498db;
+  background-color: #3498db75;
   z-index: -1;
   border-radius: 10px;
   text-align: center;
@@ -178,7 +194,6 @@ h2 {
 /* Stil für Überschrift h1 im .topicName */
 .topicName h1 {
   margin: 0;
-  border: 3px solid #333;
   border-radius: 20px;
   font-size: 40px;
   font-family: Arial, sans-serif;
@@ -192,26 +207,36 @@ h2 {
   justify-content: center;
   text-align: center;
   font-weight: 600;
-  background: #7845f0;
+  background-color: #5d26a5;
   color: #fff;
   height: 80px;
   align-items: center;
   border-radius: 10px;
   font-size: 24px;
   margin: 20px 0;
+  font-family: Arial, sans-serif;
+
 }
 
 /* Stil für Label-Elemente */
 label {
   display: block;
-  color: #333;
+  color: #ffffff;
   font-size: 18px;
-  width: 100%;
+  width: 450px;
+  min-height: 24px;
   font-weight: 600;
-  background-color: #f5f5f5;
-  border: 2px solid gray;
+  background-color: #5d26a559;
+  border: 1px solid rgba(255, 255, 255, 0);
   border-radius: 10px;
-  margin: 10px 0;
+  margin: 5px;
+  font-family: Arial, sans-serif;
+  display:flex;
+  padding:5px 5px ;
+  box-shadow: 0 5px 0px rgba(0, 0, 0, 0.2);
+
+
+
 }
 
 /* Zusätzliche Stile für bestimmte Elemente */
