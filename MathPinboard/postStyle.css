@@ -1,287 +1,264 @@
+/* 21.11.23 */
+/* Basisstil für den gesamten Inhalt */
 .post {
-    border-radius: 10px;
-    max-width: 50%;
-    min-width: 510px;
-    padding: 5px;
-    margin: 20px auto 20px auto;
-    border: 1px solid black;
-    justify-content: center;
-    align-items: center;
-    box-shadow: rgba(21, 25, 29, .1) 10px 5px 2px;
+  border-radius: 10px;
+  max-width: 70%;
+  min-width: 300px;
+  padding: 20px;
+  margin: 20px auto;
+  border: 2px solid #333;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  background-color: #f5f5f5;
+  text-align: left;
+  font-family: Arial, sans-serif;
 }
 
-
-.post .deleteBtn,.post .upvoteBtn,.post .downvoteBtn {
-  position: relative;
-}
-button{
-  width: 40px;
-    align-items: center;
-    appearance: none;
-    background-color: dodgerblue;
-    background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
-    background-size: calc(100% + 20px) calc(100% + 20px);
-    border-radius: 7px;
-    border-width: 0;
-    box-shadow: none;
-    box-sizing: border-box;
-    color: #FFFFFF;
-    cursor: pointer;
-    display: inline-flex;
-    font-family: CircularStd, sans-serif;
-    font-size: 1rem;
-    height: 25px;
-    justify-content: center;
-    line-height: 0.8;
-    padding: 6px 10px;
-    position: relative;
-    text-align: center;
-    text-decoration: none;
-    transition: background-color .2s, background-position .2s;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: top;
-    white-space: nowrap;
-}
-button:hover {
-  background-position: -20px -20px;
-}
-.post b{
-  background-color: orange;
+/* Stil für Schaltflächen */
+.post button {
+  background: #007bff;
   border: none;
-  color: black;
-  padding: 4px;
-  box-shadow: 0 0 8px orange;
+  color: #fff;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: background 0.2s, transform 0.2s;
+  cursor: pointer;
+}
+
+.post button:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}
+
+/* Stil für b-Tags */
+.post b {
+  background-color: #ff5733;
+  color: #fff;
+  padding: 8px;
+  box-shadow: 0 0 10px #ff5733;
   min-width: 100px;
   text-align: center;
-  text-decoration: none;
   display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
+  font-size: 18px;
+  margin: 8px 4px;
   border-radius: 10px;
 }
 
-.post h3{
-  background-color: royalblue;
-  padding: 10px;
-  color: white;
-  min-width: 200px;
-  border-radius: 10px;
+/* Stil für h3-Überschriften */
+.post h3 {
+  background-color: #3498db;
+  padding: 14px;
+  color: #fff;
+  min-width: 180px;
+  border-radius: 8px;
   text-align: center;
-  font-size: 20px;
-  font-weight: 800;
+  font-size: 24px;
+  font-weight: 600;
 }
-.post strong{
-  display: inline-block;
-    max-width: 525px;
+
+/* Stil für strong-Tags */
+.post strong {
+  display: block;
+  max-width: 500px;
+  margin: 10px auto;
 }
-.post p{
-  max-width: 77%;
+
+/* Stil für p-Elemente */
+.post p {
+  max-width: 90%;
   word-break: break-word;
+  font-family: Arial,sans-serif;
 }
 
-.post .tags{
-  background-color: lightgrey;
-  border-radius: 10px;
-  padding: 5px;
-}
-.upvoteBtn button{
-  position: absolute;
-  right: 0;
-  width: 100px;
-    height: 25px;
-    background-color: #2ea44f;
-    background-image: linear-gradient(1deg, green, #2ea44f 99%);
-    font-weight: 700;
-}
-.downvoteBtn button{
-  position: absolute;
-  right: 0;
-  top: 30px;
-  width: 100px;
-    height: 25px;
-    background-color: red;
-    background-image: linear-gradient(1deg, darkred, red 99%);
-    font-weight: 700;
-}
-.deleteBtn button{
-  position: absolute;
-  right: 0;
-  top: -113px;
-  width: 120px;
-    height: 25px;
-    background-color: red;
-    background-image: linear-gradient(1deg, darkred, red 99%);
-    font-weight: 700;
-}
-
-.filterArea button[type="submit"],.commentInput button[type="submit"]{
-  width: 150px;
-    height: 50px;
-    background-color: #2ea44f;
-    background-image: linear-gradient(1deg, green, #2ea44f 99%);
-    font-weight: 700;
-}
-.filterArea button{
-  width: 180px;
-  background-color: red;
-  background-image: linear-gradient(1deg, darkred, red 99%)
-}
-.comment{
-  background-color: #ddd;
-  color: rgb(0, 0, 0);
-  padding: 10px;
-  text-decoration: none;
-  font-size: 16px;
-  margin: 4px 2px;
-  border-radius: 10px;
-  word-break: break-word;
-}
-
-.commentText{
-  background-color: #f2f2f2;
-  border: 1px solid black;
+/* Stil für Tags */
+.post .tags {
+  background-color: #eee;
   border-radius: 5px;
-  padding: 5px;
+  padding: 6px;
+}
+
+/* Stil für Upvote, Downvote und Löschen-Buttons */
+.upvoteBtn button,
+.downvoteBtn button,
+.deleteBtn button {
+  background: #2ecc71;
+  border: none;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+}
+
+/* Stil für Kommentare */
+.comment {
+  background-color: #f9f9f9;
+  color: #444;
+  padding: 12px;
+  font-size: 18px;
+  border-radius: 8px;
+  margin: 8px 0;
+}
+
+/* Stil für Kommentartext */
+.commentText {
+  background-color: #f2f2f2;
+  border: 1px solid #333;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 20px;
+  margin-top: 10px;
+  font-family: Arial,sans-serif;
+
+}
+
+/* Allgemeine Stiländerungen für Formulare */
+form {
+  margin: 20px 0;
+}
+
+/* Stil für Formular-Submit-Buttons */
+form button[type="submit"] {
+  width: 160px;
+  height: 50px;
+  background: #029e438c;
+  font-weight: 600;
+  border-radius: 10px;
+  border-color:rgba(255, 255, 255, 0);
+  color:white;
+  font-size: 18px;
+}
+
+/* Stil für Datei-Upload-Input */
+form input[type="file"] {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  color: #333;
+  padding:10px;
+  border-radius: 8px;
+  width: 450px;
+  margin: 4px;
   margin-bottom: 30px;
-  margin-top: 5px;
+
+
 }
 
-form{
-  margin-left: 20px;
-}
-
-form[action="process_post.php"] button[type="submit"]{
-  width: 200px;
-    height: 60px;
-  background-color: #2ea44f;
-    background-image: linear-gradient(1deg, green, #2ea44f 99%);
-    font-weight: 700;
-}
-
-form input[type="file"]{
-  background-color: floralwhite;
-  border: 1px solid gray;
-  color: black;
-  padding: 5px;
-  text-align: center;
-  align-content: center;
-  text-decoration: none;
-  display: inline-block;
+/* Stil für Texteingabe-Felder */
+form input[type="text"],
+form textarea {
+  background-color: #f5f5f5;
+  border: 1px solid rgba(255, 255, 255, 0);
+  color: #333;
+  padding: 10px;
   font-size: 16px;
   margin: 4px 0;
-  border-radius: 10px;
-
-}
-
-form input[type="text"]{
-  background-color: whitesmoke;
-  border: 1px solid gray;
-  color: black;
-  padding: 5px;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
-  border-radius: 10px;
-}
-::placeholder{
-  color: gray;
-}
-form textarea{
-  background-color: aliceblue;
-  background-image: linear-gradient(to bottom right, aliceblue 50%,lightsteelblue);
-  border: 1px solid gray;
-  color: black;
-  padding: 3px;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  margin: 4px 2px;
   border-radius: 8px;
-  height: 100px;
-  width: 300px;
+  width: 450px;
+  margin: 4px;
+  margin-bottom: 30px;
+ 
 }
 
-.contentText{
-  width: 98%;
-}
-.contentTextDiv{
-  max-width: 710px;
+::placeholder {
+  color: #999;
 }
 
-input[type="text"] {
-  width: 300px;
+/* Stil für Video- und Bild-Elemente */
+video,
+iframe,
+img {
+  width: 100%;
 }
 
-h2{
+/* Stil für Dateiliste */
+.filesDiv {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+/* Stil für Überschrift h2 */
+h2 {
   position: relative;
   top: 0;
   left: 0;
-  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  color: white; /* Set the text color for the heading */
-  width: 100%; /* Set the width to 100% of the viewport width */
-  background-color: rgb(114, 79, 184); /* Set the background color for the band */
-  z-index: -1; /* Position the band behind the heading */
+  font-family: Arial, sans-serif;
+  color: #ffff;
+  width: 100%;
+  background-color: #3498db75;
+  z-index: -1;
   border-radius: 10px;
   text-align: center;
-  font-size: 35px;
-  vertical-align: center;
+  font-size: 30px;
   padding: 10px 0 10px 0;
+  margin: 20px 0;
 }
 
-.topicName h1{
+/* Stil für Überschrift h1 im .topicName */
+.topicName h1 {
   margin: 0;
-  border: 3px solid black;
-  border-radius: 30px;
-  font-size: 80px;
-  font-family: fantasy;
-  padding: 0 20px 0 20px;
-  min-width: 300px;
+  border-radius: 20px;
+  font-size: 40px;
+  font-family: Arial, sans-serif;
+  padding: 0 20px;
+  min-width: 220px;
 }
-.topicName{
+
+/* Stil für .topicName */
+.topicName {
   display: flex;
-  align-content: center;
   justify-content: center;
   text-align: center;
-  font-weight: 700;
-  background-image: linear-gradient(to bottom right, orange, red);
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  height: 100px;
-}
-label{
-  display: inline-block;
-  position: relative;
-  padding: 0 0 4px 8px;
-  color: #FFF;
-  font-size: 20px;
-  width: 350px;
-  height: 25px;
   font-weight: 600;
-  font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-  background-color: cornflowerblue;
-  background-image: linear-gradient(to bottom left,rgb(114, 79, 184), rgb(100, 149, 237));
+  background-color: #5d26a5;
+  color: #fff;
+  height: 80px;
+  align-items: center;
   border-radius: 10px;
-  z-index: -1;
-  margin-bottom: 3px;
+  font-size: 24px;
+  margin: 20px 0;
+  font-family: Arial, sans-serif;
+
 }
-.filesDiv div{
+
+/* Stil für Label-Elemente */
+label {
+  display: block;
+  color: #ffffff;
+  font-size: 18px;
+  width: 450px;
+  min-height: 24px;
+  font-weight: 600;
+  background-color: #5d26a559;
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-radius: 10px;
+  margin: 5px;
+  font-family: Arial, sans-serif;
+  display:flex;
+  padding:5px 5px ;
+  box-shadow: 0 5px 0px rgba(0, 0, 0, 0.2);
+
+
+
+}
+
+/* Zusätzliche Stile für bestimmte Elemente */
+.filesDiv div {
   margin-right: 10px;
 }
-.orOrAnd{
+
+.orOrAnd {
   position: absolute;
   padding-left: 2px;
 }
-video, iframe{
-  width: 100%;
-}
-img{
+
+video, iframe {
   width: 100%;
 }
 
-.filesDiv{
+img {
+  width: 100%;
+}
+
+.filesDiv {
   display: flex;
   flex-wrap: wrap;
 }

@@ -1,103 +1,109 @@
-html,
-body {/*allgemein die ganze seite, damit die tabelle nicht über den bildschirmrand geht*/
+/* 21.11.23 */
+html, body {
     min-height: 100%;
-    background-color: #eeeeee;
+    background-color: #f5f5f5;
+    font-family: Arial, sans-serif;
+    justify-content: center; /* Horizontal zentrieren */
+    align-items: center; /* Vertikal zentrieren */
 }
 
-.searchBar {  /*die suchleisten oben links*/
+.searchBar {
     width: 300px;
     height: 30px;
     border-radius: 10px;
     position: sticky;
     top: 10px;
     z-index: 2;
+    background-color: #fff;
+    padding: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-table {/* die ganze Thementabelle*/
+table {
     margin-top: 20px;
     width: 100%;
     border-collapse: collapse;
+    background-color: #fff;
 }
-/*Die Tabelle hat nur eine Spalte, wo ein container drin is mit den ganzen Themen*/
-tr {/* eine Reihe der Themen(sozusagen die Hülle für das eine Feld mit den ganzen Themen)*/
+
+tr {
     display: flex;
     text-align: center;
     flex-wrap: wrap;
-    border-top: 3px solid black;
-    border-radius: 5px;
-    box-shadow: 0 -10px 30px -10px #666;
+    border-top: 3px solid #000;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    margin-top: 10px;
 }
 
-td {/*das Feld in der SPalte, wo die ganzen Sachen Reinkommen*/
+td {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-wrap: wrap;
-    padding-bottom: 20px;
-    padding-top: 20px;
+    padding: 20px;
     min-height: 150px;
     width: 100%;
+    background-color: #fff;
 }
 
-.topic {/*ein Themencontainer, mit den gesamten Inhalten des Themas*/
-    border-radius: 10px;
-    max-width: 350px;
-    min-width: 100px;
+form{
+    align-self: auto;
+    width: 200px;
+    
+}
+
+.topic {
+    border-radius: 3px;
+    width: 225px;
     min-height: 100px;
-    padding: 5px;
-    margin: 5px;
-    border: 1px solid black;
-    justify-content: center;
-    align-items: center;
-    box-shadow: rgba(21, 25, 29, .1) 5px 5px 0;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
 }
 
-.top {/* der obere Teil des Themas mit den ganzen Knöpfen*/
-    display: flex;
-    justify-content: space-between;
+p {
+    font-size: 16px;
+    margin: 0;
+    font-family: Arial, sans-serif;
 }
 
-p {/* bisher nur bei den Fragefenstern der Text, wenn man was bearbeitet/Löscht*/
-    font-size: 17px;
-    margin: 0 0 0 0;
-    font-family: -apple-system, system-ui, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
-}
-
-.symbolDiv {/* falls es einen Tag-Knopf gibt, werden alle kleinen Knöpfe in ein container gepackt und das is der*/
+.symbolDiv {
     height: 100%;
-    display: flex;
+   
     max-width: 126px;
-    margin-left: 8px;
+    margin-left: 10px;
 }
 
-
-details {/* der Inhalt des Dropdowns*/
+details {
     border: 1px solid #aaa;
-    border-radius: 6px;
-    padding: 0.5em 0.5em 0;
-    margin-top: 5px;
+    border-radius: 3px;
+    padding: 10px;
+    margin-top: 10px;
 }
 
-summary:hover {/*wenn man übr das Dropdown hovered*/
-    background-color: #ddd;
+summary:hover {
+    background-color: #f0f0f0;
     cursor: pointer;
 }
 
-summary {/*der obere Teil des Dropdown*/
+summary {
     font-weight: bold;
-    border-radius: 4px;
-    margin: -0.5em -0.5em 0;
-    padding: 0.4em;
+    border-radius: 3px;
+    margin: 0;
+    padding: 10px;
 }
 
-details[open] {/* wenn das dropdown geöffnet wird*/
-    padding: 0.5em;
+details[open] {
+    padding: 10px;
     word-wrap: break-word;
 }
 
-details[open] summary {/* der obere Teil, wenn es geöffnet wird*/
+details[open] summary {
     border-bottom: 1px solid #aaa;
-    margin-bottom: 0.3em;
+    margin-bottom: 10px;
 }
 
 .topicLink:hover{
@@ -110,173 +116,219 @@ details[open] summary {/* der obere Teil, wenn es geöffnet wird*/
     top: 10%;
     min-width: 450px;
     height: 75%;
-    background-color: antiquewhite;
-    align-items: center;
-    border: 2px solid black;
-    border-radius: 5px;
-    padding: 0 10px 0 10px;
+    background-color: #fafafa;
+    
+    border-radius: 3px;
+    padding: 20px;
     z-index: 3;
 }
 
-.addForm {/* das Formular wo die ganzen Infos eingetragen werden*/
+.addForm {
     display: flex;
     height: 70%;
     align-content: space-between;
     max-width: 100%;
+    padding: 10px;
+}
+
+.tagTextField {
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    color: #333;
+    margin-top: 10px;
     padding: 5px;
 }
 
-.tagTextField {/* das textfeld, wenn man auf den Tag-Knopf gedrückt hat*/
-    background-color: aliceblue;
-    border: 1px solid cornflowerblue;
-    border-radius: 3px;
-    color: deepskyblue;
-    margin-top: 5px;
-    padding: 3px 3px;
-}
-
-textarea {/* allgemein jegliche Textfelder*/
+textarea {
     height: 25%;
     resize: none;
     position: relative;
     width: 98%;
 }
-.textFieldAddW {/* die einzelnen Textfelder im Add-Fenster*/
-    margin-bottom: 7px;
+
+.textFieldAddW {
+    margin-bottom: 10px;
 }
-.deleteWindow {/* das Löschfenster*/
+
+.deleteWindow {
     position: fixed;
     left: 40%;
     top: 20%;
-    width: 300px;
-    border-radius: 5px;
-    border: 2px solid black;
+    width: 350px;
+    border-radius: 10px;
+    
     height: 100px;
-    background-color: #eeeeee;
+    background-color: #f5f5f5;
     align-items: center;
+    padding: 10px;
 }
 
-.deleteForm {/* der untere Teil im Löschfenster, wo nur die Knöpfe drin sind*/
+.deleteForm {
     margin-top: 20px;
 }
-/*das Grundgerüst jedes Knopfes (ich habe einfach einen aus dem Internet genommen, der gut aussah)*/
+
 .tagButton, .editBtt, .deleteBtt, .cancelBtt, .addButton, .finishAddBtt, .yes, .no, .topicName, .backButton {
     width: 40px;
     align-items: center;
-    appearance: none;
-    background-color: dodgerblue;
-    background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
-    background-size: calc(100% + 20px) calc(100% + 20px);
-    border-radius: 7px;
-    border-width: 0;
-    box-shadow: none;
-    box-sizing: border-box;
-    color: #FFFFFF;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: #fff;
     cursor: pointer;
     display: inline-flex;
-    font-family: CircularStd, sans-serif;
+    font-family: Arial, sans-serif;
     font-size: 1rem;
-    height: 25px;
+    height: 30px;
     justify-content: center;
-    line-height: 0.8;
-    padding: 6px 10px;
-    position: relative;
+    line-height: 1;
+    padding: 10px 20px;
     text-align: center;
     text-decoration: none;
-    transition: background-color .2s, background-position .2s;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-    vertical-align: top;
-    white-space: nowrap;
+    transition: background-color 0.2s, transform 0.2s;
+    margin: 1%;
+    border-color:rgba(136, 136, 136, 0.493);
+   
 }
-/*da der css file von oben nach unten gelesen wird, wird nachher für jeden Knopf noch einzelne Änderungen am Grundgerüst gemacht*/
-.topicName {/*der Name des Themas*/
+
+.topicName {
     width: auto;
     height: 40px;
-    border-radius: 10px;
     font-weight: 700;
-    font-size: 15px;
-    background-color: purple;
-    background-image: linear-gradient(to top left, purple, mediumpurple 70%);
+    font-size: 18px;
+    background-color: rgba(97, 31, 134, 0.281);
     word-wrap: break-word;
 }
-.backButton{/* der Zurück-knopf oben links*/
+
+.topicName:hover{
+    background-color: rgba(97, 31, 134);
+    transform: scale(1.1);
+}
+
+.backButton {
     height: 35px;
     width: 80px;
-    background-color: red;
-    background-image: linear-gradient(to top left, orangered, orange);
-    border-radius: 10px;
+    background-color: #dc3545;
+    border-radius: 3px;
     position: sticky;
     top: 10px;
     z-index: 2;
 }
 
 .tagButton {
-    margin: 0 4px 0 0;
+   
+    background-color: rgba(74, 74, 214, 0.582);
+}
+.tagButton:hover{
+    background-color: rgba(74, 74, 214);
+    transform: scale(1.1);
 }
 
-.addButton {/* der fette grüne Add-Knopf xD*/
+.addButton {
     width: 100px;
     height: 100px;
-    background-color: #2ea44f;
-    background-image: linear-gradient(to top left, darkgreen, #22bd22 99%);
+    background-color: rgb(74, 218, 110);
+    border-radius: 50%;
     font-weight: 700;
+    font-size: 24px;
+    line-height: 100px;
+}
+
+.addButton:hover {
+    
+    background-color: rgb(36, 124, 57);
+    transform: scale(1.1);
+   color: #fff;
+
 }
 
 .cancelBtt, .yes, .no {
     width: 80px;
-    background-color: red;
-    background-image: linear-gradient(1deg, darkred, red 99%);
+    background-color: #dc35467a;
+    border-radius: 6px;
+    color: #fff;
 }
 
 .cancelBtt {
     position: relative;
-    left: 40%;
-    top: 50px;
+    left: 50%;
+    top: 20px;
     width: 100px;
-    height: 35px;
+    height: 40px;
 }
 
 .yes {
     position: relative;
-    left: 50px;
-    width: 60px;
+    left: 60px;
+    width: 80px;
+    background-color: #dc354681;
+    color: #fff;
+    padding: 10px;
+}
+.yes:hover{
+    background-color: #dc3545;
+    transform: scale(1.1);
 }
 
 .no {
     position: relative;
-    left: 150px;
-    width: 50px;
+    left: 160px;
+    width: 60px;
+    background-color: #dc354681;
+    color: #fff;
+    padding: 10px;
+}
+.no:hover{
+    background-color: #dc3545;
+    transform: scale(1.1);
 }
 
-.finishAddBtt {/* der finale Knopf zum endgültigen hinzufügen des Themas*/
+.finishAddBtt {
     width: 100px;
-    background-color: #2ea44f;
-    background-image: linear-gradient(1deg, darkgreen, #2ea44f 99%);
+    background-color: #28a745;
+    border-radius: 3px;
+    color: #fff;
     position: relative;
-    left: 15%;
-    top: 50px;
-    line-height: 20px;
-    height: 35px;
+    left: 20%;
+    top: 40px;
+    font-size: 18px;
+    height: 40px;
 }
 
 .deleteBtt {
     max-width: 30px;
-    background-color: red;
-    background-image: linear-gradient(1deg, darkred, red 99%);
-    font-size: 20px;
-    font-weight: 600;
-    padding: 1px 1px;
+    background-color: #dc354681;
+    border-radius: 50%;
+    color: #fff;
+    padding: 10px;
+    
+}
+.deleteBtt:hover{
+    background-color: #dc3545;
+    transform: scale(1.1);
 }
 
 .editBtt {
-    background-color: initial;
-    background-image: linear-gradient(-180deg, #FF7E31, #E62C03);
-    color: white;
+    background-color: rgba(255, 193, 7, 0.61);
 }
-/* die ganzen Hovereffekte der Knöpfe*/
-.tagButton:hover, .editBtt:hover, .addButton:hover, .deleteBtt:hover, .cancelBtt:hover, .finishAddBtt:hover, .yes:hover, .no:hover, .topicName:hover, .backButton:hover {
-    background-position: -20px -20px;
-    transform: translate(0, -2px);
+
+.editBtt:hover {
+    
+    background-color: rgb(255, 193, 7);
+    transform: scale(1.1);
+   
+
 }
+.symbolDiv {
+    height: 100%;
+    max-width: 200px;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center; /* Horizontal zentrieren */
+    align-items: center; /* Vertikal zentrieren */
+}
+
+/*.tagButton:hover, .editBtt:hover, .addButton:hover, .deleteBtt:hover, .cancelBtt:hover, .finishAddBtt:hover, .yes:hover, .no:hover, .topicName:hover, .backButton:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+*/
