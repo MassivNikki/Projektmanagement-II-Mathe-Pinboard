@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User</title>
+</head>
+<body>
+    <button onclick="removeCookie()">Log out</button>
+
+    <script>
+        function removeCookie() {
+            // Set the expiration date to a past time to instadelete it
+            // Dont worry about the dead entry in the database. Any old ones will get hoovered up by others. Along with that there can be no two session tokens for 1 user
+            document.cookie = "login_token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            alert("Logout successfull!");
+        }
+    </script>
+
+<button onclick="window.history.back()">Go Back</button>
+<a href="change_password.php">Change Password</a>
+<a href="delete_user.php">Delete Account</a>
+
+<div id="loginPopupContainer"></div>
+    <script>
+        //again the standard script stuff
+        const baseUrl = '';
+    </script>
+    
+    <script src="login.js"></script>
+    <script>
+        //check if the user is an admin as soon as the site is loaded and give acces to the admins User control stuff
+        document.addEventListener('DOMContentLoaded', function() {
+        loginModule.autoCheckToken().then(() => {
+            console.log(loginModule.getRole());
+            if(loginModule.getRole() === "admin"){
+                // Create the first link
+                var link1 = document.createElement('a');
+                link1.href = 'admin_page.php';
+                link1.textContent = 'To User Control (admins only)';
+
+                // Add the links to the body or any other element on your page
+                document.body.appendChild(document.createElement('br'));
+                document.body.appendChild(link1);
+            }
+        });
+    });
+</script>
+</body>
+</html>
