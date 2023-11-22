@@ -142,9 +142,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!-- Post submission form -->
 <form method="POST" action="process_post.php" enctype="multipart/form-data">
     <div class="filesDiv">
-        <div><label for="name">Username:</label><br>
-            <input type="text" name="name" required>
-        </div>
+            <input type="hidden" name="name" id="postname" value="null" required>
         <div><label for="text">Überschrift:</label><br>
             <input type="text" name="header" required>
         </div>
@@ -157,16 +155,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="filesDiv">
         <div>
             <label for="video">Video(mp4):</label><br>
-            <input type="file" name="videoFile"><br>
             <input type="text" name="video" placeholder="Link des videos"></div>
         <div>
             <label for="picture">Picture:</label><br>
-            <input type="file" name="picture"><br>
             <input type="text" name="pictureLink" placeholder="Link des Bildes">
-        </div>
-        <div>
-            <label for="file">File:</label><br>
-            <input type="file" name="file">
         </div>
     </div>
 
@@ -255,8 +247,7 @@ if (count($phpFiles) != 0) {
 <div class="commentInput">
     <!-- Comment form -->
     <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-        <label for="name">Name:</label><br>
-        <input type="text" name="name" value="" required><br>
+        <input type="hidden" name="name" id="commentname" value="null" required><br>
 
         <label for="comment">Comment:</label><br>
         <textarea name="comment" value="" required></textarea><br>
@@ -289,5 +280,27 @@ if (count($commentFiles) === 0) {
     echo "Noch keine Kommentare.";
 }
 ?>
+<div id="loginPopupContainer"></div>
+    <script>
+        //standard user management script stuff, along with the "account" button
+        const baseUrl = '../../../userManagement/';
+    </script>
+    
+    <script src="../../../userManagement/login.js"></script>
+    <script>
+        //DOM listener needed here
+        document.addEventListener('DOMContentLoaded', function() {
+        // Automatically insert correct names for usernames in posts and comments
+        loginModule.autoCheckToken().then(() => {
+            $username = loginModule.getUsername();
+            $role = loginModule.getRole();
+            document.getElementById("commentname").value = $username+" ("+$role+")";
+            document.getElementById("postname").value =  $username+" ("+$role+")";
+            console.log($username);
+        });
+    });
+</script>
+<a href="userManagement/logout.html" style="position: fixed; top: 10px; right: 10px; text-decoration: none; background-color: #007bff; color: #fff; padding: 10px; border-radius: 5px;">Account</a>
+<!-- Yeah, this button kinda hurts your soul, buuuut doing it this way makes copy-pasting easy -->
 </body>
 </html>
