@@ -3,9 +3,9 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$databaseSessions = "database2"; // Replace with the actual name of your Sessions database
+$databaseSessions = "database2";
 
-// Retrieve the login token from the request payload
+// Retrieve the login token
 $requestData = json_decode(file_get_contents("php://input"), true);
 $loginToken = $requestData['loginToken'];
 
