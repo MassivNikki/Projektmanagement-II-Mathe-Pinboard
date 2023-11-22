@@ -300,7 +300,7 @@ if (count($commentFiles) === 0) {
         });
     });
 </script>
-<a href="userManagement/logout.html" style="position: fixed; top: 10px; right: 10px; text-decoration: none; background-color: #007bff; color: #fff; padding: 10px; border-radius: 5px;">Account</a>
+<a href="../../../userManagement/logout.html" style="position: fixed; top: 10px; right: 10px; text-decoration: none; background-color: #007bff; color: #fff; padding: 10px; border-radius: 5px;">Account</a>
 <!-- Yeah, this button kinda hurts your soul, buuuut doing it this way makes copy-pasting easy -->
 </body>
 </html>
