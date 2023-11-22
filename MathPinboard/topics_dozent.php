@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="topics.css">
     <script type="text/javascript" src="functionsJS.js"></script>
     <title>Themenauswahl</title>
+    
 </head>
 
 <body>
@@ -15,21 +16,36 @@
 <input class="searchBar" type="text" id="searchTag" onkeyup="searchTag()" placeholder="Search for Tags"><br><br>
 <?php
 require './functions.php';
-$dir = './topics';//dieser ordner is auf der selben ebene und beinhaltet alle Objekte und Seiten der einzelnen Themen
+$dir = './topics';//in this folder are all the topics and post site files
 
 $count = iterator_count(new FilesystemIterator($dir));
 refreshPost($dir);
 echo "<table ><tbody class='mainTable'></tbody></table>";
 //print_r($_POST);
 
-echo "<script>";//die ordner im htdocs ordner werden durchgegangen und basierend darauf werden objekte erstellt
-echo drawTableRows($dir);//fügt die Reihen der Seite hinzu
-echo drawTopics($dir, "0");//fügt der koresspondierenden Zeile die jeweiligen Themen hinzu
+echo "<script>";
+echo drawTableRows($dir);//generates the whole table based of the folder structure
+echo drawTopics($dir, "0");//adds the topics which are in the folders
 echo "</script>";
 
-//abhangigkeitenliste bei jedem topic mit reinpacken, (allgemein in den files suchen und nicht in den klassen)
 ?>
-
+<div id="loginPopupContainer"></div>
+    <script>
+        //standard user management stuff
+        const baseUrl = 'userManagement/';
+    </script>
+    
+    <script src="userManagement/login.js"></script>
+    <script>
+    // Wait for the autoCheckToken to complete before checking the role. Boot 'em if theyre wrong
+    loginModule.autoCheckToken().then(() => {
+        if (loginModule.getRole() === "user") {
+            // Redirect the user to another page
+            window.location.href = "topics_student.php";
+        }
+    });
+</script>
+<a href="userManagement/logout.html" style="position: fixed; top: 10px; right: 10px; text-decoration: none; background-color: #007bff; color: #fff; padding: 10px; border-radius: 5px;">Account</a>
 </body>
 
 </html>

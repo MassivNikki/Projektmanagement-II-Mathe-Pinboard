@@ -1,6 +1,7 @@
 <?php
-function refreshPost($dir) //jedes mal, wenn die seite aktualisiert wird bzw eine Post request geschickt wurde, wird geprüft um welche Art von Request es sich handelt
-{                           //basierend auf der Request wird bestimmter code ausgeführt
+function refreshPost($dir)
+{
+    //Every time the page is updated or a post request is sent, it is checked what type of request it is and certain code is executed based on the request
     $topicName = "topicName";
     $topicTags = "topicTags";
     $GtK = "GoodToKnow";
@@ -8,7 +9,7 @@ function refreshPost($dir) //jedes mal, wenn die seite aktualisiert wird bzw ein
     $oldName = "oldName";
     $level = "level";
     //print_r($_POST);
-    if (isset($_POST[$topicName])) {// wenn es eine post request gibt, wird geschaut welche daten vorhanden sind, wobei der name pflicht ist.
+    if (isset($_POST[$topicName])) {// If there is a post request, it will be checked which data is available, whereby the name is mandatory.
         $topicName = $_POST[$topicName];
         $topicTags = $_POST[$topicTags];
         $GtK = $_POST[$GtK];
@@ -16,60 +17,62 @@ function refreshPost($dir) //jedes mal, wenn die seite aktualisiert wird bzw ein
         $oldName = $_POST[$oldName];
         $level = $_POST[$level];
     }
-    //$content ist immer von dem value des buttons im js code abhängig
-    foreach ($_POST as $name => $content) { // geht dir request in name -> value paaren durch
+    //$content is the value from the js button
+    foreach ($_POST as $name => $content) { //goes through the request in name -> value pairing
         switch ($name) {
-            case "Add"://in diesem Fall wird ein Thema hinzugefügt oder umbenannt
+            case "Add"://in this case a new topic gets added
                 echo $oldName;
-                if (!file_exists($dir . '/T' . $content . '/' . $topicName) && !isset($oldName)) {//falls es das thema noch nicht gibt wird ein ordner erstellt und die Dateien der
-                                                                                                            // Beitragsseite reinkopiert
+                //If the topic does not yet exist, a folder will be created and the files from the post page will be copied into it
+                if (!file_exists($dir . '/T' . $content . '/' . $topicName) && !isset($oldName)) {
                     mkdir($dir . '/T' . $content . '/' . $topicName, 0777);
                     copy("anwendung.php", $dir . '/T' . $content . '/' . $topicName . "/anwendung.php");
                     copy("process_post.php", $dir . '/T' . $content . '/' . $topicName . "/process_post.php");
                 } else {
-                    rename($dir . '/T' . $content . '/' . $oldName, $dir . '/T' . $content . '/' . $topicName);//falls die action eine Umbenennung ist, wird der ordner umbenannt
+                    //if the folder exists than it is a rename action and the folder gets renamed
+                    rename($dir . '/T' . $content . '/' . $oldName, $dir . '/T' . $content . '/' . $topicName);
                 }
-                if(strlen($topicName) > 0){//die zusätzlichen dateien werden angelegt
+                //the additional files get added if there is a topic to be added
+                if(strlen($topicName) > 0){
                     createFile($dir, $content, $topicName, "tags", $topicTags);
                     createFile($dir, $content, $topicName, "GoodToKnow", $GtK);
                     createFile($dir, $content, $topicName, "Description", $description);
                 }
-
-                header('Location: topics_dozent.php');//Seite wird neu geladen, damit die ansicht aktualisiert wird
+                //site gets reloaded so the content gets updated and the Post request doesn't get triggered twice
+                header('Location: topics_dozent.php');
                 break;
-            case "moveTopic"://hier wird ein Thema in eine andere Ebenen verschoben
+            case "moveTopic"://this is the drag and drop action -> the topic gets moved to another folder
                 rename($dir . '/T' . $content . '/' . $topicName, $dir . '/' . $level . '/' . $topicName);
                 header('Location: topics_dozent.php');
                 break;
-            case "deleteTopic"://das Thema wird gelöscht
-                $data = explode(",", $content);// content ist in dem Fall "Name, Ebene"
+            case "deleteTopic"://the topic gets deleted
+                $data = explode(",", $content);// content is "name, level" in this case
                 deleteFolder($data[0], $dir . "/T" . $data[1]);
                 header('Location: topics_dozent.php');
                 break;
             case "editTopic":
-                $content = explode(",", $content);// content ist in dem Fall "Ebene, Verzeichnis, Name"
+                $content = explode(",", $content);// content is "level, directory, name"
                 $name = $content[2];
-                $gtk = getFileText($dir, $content[1], "GoodToKnow");//nimmt den inhalt der datei
+                $gtk = getFileText($dir, $content[1], "GoodToKnow");
                 $tags = getFileText($dir, $content[1], "tags");
                 $desc = getFileText($dir, $content[1], "description");
                 echo "<script>openEditWindow('" . $name . "','" . $gtk . "','" . $tags . "','" . $desc . "','" . $content[0] . "');</script>";
                 break;
             case "close":
-                header('Location: topics_dozent.php');//die seite wird neu geladen wodurch sich das Fenster schließt und jegliche daten in der Request gelöscht werden
+                header('Location: topics_dozent.php');//while the page gets reloaded the in-page window will be closed
                 break;
         }
 
     }
 }
-function deleteFolder(string $foldername, string $dir)//löscht den übergebenen ordner
+function deleteFolder(string $foldername, string $dir)//deletes the folder
 {
     $handle = opendir($dir);
     while (($entry = readdir($handle)) !== false) {
         if ($entry != '.' && $entry != '..' && $entry != '.htaccess') {
             if ($entry == $foldername) {
                 $folder = $dir . "/" . $foldername;
-                cleanFolder($folder);
-                rmdir($folder);
+                cleanFolder($folder);//removes all data out of the folder
+                rmdir($folder);//deletes the folder
             }
         }
 
@@ -77,15 +80,17 @@ function deleteFolder(string $foldername, string $dir)//löscht den übergebenen
     closedir($handle);
 }
 
-function cleanFolder(string $dir)//löscht den inhalt des angegebenen ordners
+function cleanFolder(string $dir)//cleans the folder
 {
     $objects = scandir($dir);
     foreach ($objects as $object) {
         if ($object != '.' && $object != '..') {
             if (is_dir($dir . '/' . $object)) {
+                //folders cant be deleted if it has content, so it goes into the folder and deletes it whole content and deletes it afterward
                 cleanFolder($dir . '/' . $object);
                 rmdir($dir . '/' . $object);
             } else {
+                //deletes the file
                 unlink($dir . '/' . $object);
             }
 
@@ -93,19 +98,20 @@ function cleanFolder(string $dir)//löscht den inhalt des angegebenen ordners
     }
 }
 
-function drawTopics(string $dir, string $kind)// fügt die einzelnen Themen in die Ebenen ein
+function drawTopics(string $dir, string $kind)//adds the topics into the rows
 {
     $handle = opendir($dir);
-    while (($entry = readdir($handle)) != false && $kind < 10) {//falls die Ebene des Themas größer ist als die anzahl der Ebenen, kann das Thema nicht angelegt werden
-        if ($entry != '.' && $entry != '..' && $entry != '.htaccess') {//geht jedes Objekt im ordner durch außer bestimmte dateien
+    while (($entry = readdir($handle)) != false && $kind < 10) {//if the level of the topic is out of the range of existing rows, it cant be added
+        if ($entry != '.' && $entry != '..' && $entry != '.htaccess') {//goes through every file in the folder
             if (is_dir($dir . "/" . $entry)) {//
-                if (preg_match("/T\d/", $entry)) {//falls es sich um einen "Ebenen" Ordner handelt wird auf diesen die methode angewendet
+                if (preg_match("/T\d/", $entry)) {//if it is another "level" folder, it goes into it and repeats the process in it
                     drawTopics($dir . "/" . $entry, str_replace("T", "", $entry));
                 } else {
-                    $name = str_replace(" ", "_",$entry);//leerzeichen werden mit dem unterstrich ersetzt damit später keine Probleme entstehen
+                    $name = str_replace(" ", "_",$entry);//space is replaced with underscore, so later problems are prevented
+                    //the javaScript method is called with all the data of the folder
+                    //with the js function it is shown on the page of the user
                     echo "newTopic('" . $name . "','" . getFileText($dir, $entry, "tags") . "','"
                         . $kind . "','" . getFileText($dir, $entry, "GoodToKnow") . "','" . getFileText($dir, $entry, "description") . "');\n";
-                    //die js Methode wird in die "script" Tags geschrieben, wodurch sie ausgeführt wird
                 }
             }
         }
@@ -113,26 +119,28 @@ function drawTopics(string $dir, string $kind)// fügt die einzelnen Themen in d
     closedir($handle);
 }
 
-function drawTableRows(string $dir)//fügt die ebenen in die Seite ein
+function drawTableRows(string $dir)//adds the rows to the whole table
 {
-    $handle = opendir($dir);//öffnet das übergebene verzeichnis
+    $handle = opendir($dir);//opens the directory with the topics
     while (($entry = readdir($handle)) != false) {
-        if ($entry != '.' && $entry != '..' && $entry != '.htaccess') {//falls das verzeichnis zu öffnen geht, ist $entry der jeweilige eintrag im verzeichnis
-                                                                        //bestimmte dateien werden übersprungen, da sie nicht wichtig sind
-            if (preg_match("/T\d/", $entry)) {//falls es sich um einen "Zeilen" ordner handelt wird mit der js Methode eine neue Zeile auf der Website generiert
+        // $entry is the current object if the directory can be opened
+        // specific files are skipped
+        if ($entry != '.' && $entry != '..' && $entry != '.htaccess') {
+            //if it is a folder with the specific name a new table row will be added to the table
+            if (preg_match("/T\d/", $entry)) {
                 echo "newTableRow(" . str_replace("T", "", $entry) . ");";
             }
         }
     }
 }
 
-function getFileText($dir, $entry, $fileName)//öffnet die übergebenen Datei und gibt den Inhalt zurück solange etwas drin steht
+function getFileText($dir, $entry, $fileName)//opens the file and returns it content if it has any
 {
     $File = $dir . "/" . $entry . '/' . $fileName . '.txt';
-    $handle = fopen($File, "r");//öffnet die datei zum lesen
+    $handle = fopen($File, "r");//opens the file with the data
     $size = filesize($File);
     if ($size > 0) {
-        $text = fread($handle, $size);//list die datei bis zur vorher bestimmten länge des inhaltes
+        $text = fread($handle, $size);//reads the file and returns the content
         fclose($handle);
         return $text;
     }
@@ -140,14 +148,14 @@ function getFileText($dir, $entry, $fileName)//öffnet die übergebenen Datei un
 }
 
 
-function createFile($dir, $level, $topicName, $fileName, $content)//eine neue Text datei wird angelegt und Inhalt reingeschrieben
+function createFile($dir, $level, $topicName, $fileName, $content)//a new text file is added and is filled with the given data
 {
     $path = $dir . '/T' . $level . '/' . $topicName . '/' . $fileName . '.txt';
-    if (is_file($path)) {//falls die datei schon existiert wird sie gelöscht(ist fürs editieren wichtig)
+    if (is_file($path)) {//if the file already exists it gets deleted(important for editing)
         unlink($path);
     }
-    $newFile = fopen($path, "w");//die datei wird am gewünschten Pfad angelegt
-    fwrite($newFile, $content);//die datei wird beschrieben mit dem inhalt
+    $newFile = fopen($path, "w");//creates file at specific part
+    fwrite($newFile, $content);
     fclose($newFile);
 }
 
