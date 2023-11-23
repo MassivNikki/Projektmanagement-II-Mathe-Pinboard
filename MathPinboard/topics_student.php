@@ -41,7 +41,7 @@ echo "</script>";
         }
     });
 </script>
-<a href="userManagement/logout.html" style="position: fixed; top: 10px; right: 10px; text-decoration: none; background-color: #007bff; color: #fff; padding: 10px; border-radius: 5px;">Account</a>
+<a href="userManagement/logout.html" style="z-index: 4; position: fixed; top: 10px; right: 10px; text-decoration: none; background-color: #007bff; color: #fff; padding: 10px; border-radius: 5px;">Account</a>
 
 </body>
 
