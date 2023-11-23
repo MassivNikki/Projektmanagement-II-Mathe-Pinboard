@@ -215,7 +215,6 @@ textarea {
 }
 
 .tagButton {
-   
     background-color: rgba(74, 74, 214, 0.582);
 }
 .tagButton:hover{
@@ -233,12 +232,9 @@ textarea {
     line-height: 100px;
 }
 
-.addButton:hover {
-    
+.addButton:hover,.finishAddBtt:hover {
     background-color: rgb(36, 124, 57);
     transform: scale(1.1);
-   color: #fff;
-
 }
 
 .cancelBtt, .yes, .no {
@@ -250,7 +246,7 @@ textarea {
 
 .cancelBtt {
     position: relative;
-    left: 50%;
+    left: 45%;
     top: 20px;
     width: 100px;
     height: 40px;
@@ -283,14 +279,13 @@ textarea {
 }
 
 .finishAddBtt {
-    width: 100px;
+    width: 120px;
     background-color: #28a745;
     border-radius: 3px;
     color: #fff;
     position: relative;
-    left: 20%;
-    top: 40px;
-    font-size: 18px;
+    top: 20px;
+    /*font-size: 18px;*/
     height: 40px;
 }
 
@@ -300,9 +295,9 @@ textarea {
     border-radius: 50%;
     color: #fff;
     padding: 10px;
-    
+
 }
-.deleteBtt:hover{
+.deleteBtt:hover,.cancelBtt:hover{
     background-color: #dc3545;
     transform: scale(1.1);
 }
@@ -312,11 +307,8 @@ textarea {
 }
 
 .editBtt:hover {
-    
     background-color: rgb(255, 193, 7);
     transform: scale(1.1);
-   
-
 }
 .symbolDiv {
     height: 100%;
