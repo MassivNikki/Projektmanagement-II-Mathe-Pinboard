@@ -62,20 +62,21 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="change_delete.css">
     <title>Change Password</title>
 </head>
 <body>
     <h2>Change Password</h2>
     
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <label for="old_password">Old Password:</label>
-        <input type="password" name="old_password" required>
+        <label class="inputLabel" for="old_password">Old Password:</label>
+        <input class="inputField" type="password" name="old_password" required>
         <br><br>
-        <label for="new_password">New Password:</label>
-        <input type="password" name="new_password" required>
+        <label class="inputLabel" for="new_password">New Password:</label>
+        <input class="inputField" type="password" name="new_password" required>
         <input type="hidden" id="usernameInput" name="username" value="null">
         <br><br>
-        <input type="submit" value="Change Password">
+        <input class="bttn" type="submit" value="Change Password">
     </form>
 
     <div id="loginPopupContainer"></div>
@@ -90,7 +91,7 @@ $conn->close();
     });
     
 </script>
-<button onclick="window.history.back()">Go Back</button>
+<button id="goBack" class="bttn" onclick="window.history.back()">Go Back</button>
 
 </body>
 </html>

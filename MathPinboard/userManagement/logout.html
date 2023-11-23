@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="logout.css">
     <title>User</title>
 </head>
 <body>
+    <h1>Account Management</h1>
+    <button onclick="window.history.back()">Go Back</button>
     <button onclick="removeCookie()">Log out</button>
 
     <script>
@@ -17,9 +20,8 @@
         }
     </script>
 
-<button onclick="window.history.back()">Go Back</button>
-<a href="change_password.php">Change Password</a>
-<a href="delete_user.php">Delete Account</a>
+<button onclick="window.location.href='change_password.php';">Change Password</button>
+<button onclick="window.location.href='delete_user.php';">Delete Account</button>
 
 <div id="loginPopupContainer"></div>
     <script>

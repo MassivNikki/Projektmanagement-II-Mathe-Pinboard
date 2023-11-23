@@ -69,21 +69,22 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="change_delete.css">
     <title>Delete Account</title>
 </head>
 <body>
     <h2>Delete Account</h2>
     
     <form method="post" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]);?>">
-        <label for="password">Password:</label>
+        <label class="inputLabel" for="password">Password:</label>
         <br>
-        <input type="password" name="password" required>
+        <input class="inputField" type="password" name="password" required>
         <br><br>
-        <label for="confirmation">Are you sure you want to delete your account? Type 'yes' to confirm:</label>
-        <input type="text" name="confirmation" required>
+        <label class="inputLabel" for="confirmation">Are you sure you want to delete your account? Type 'yes' to confirm:</label>
+        <input class="inputField" type="text" name="confirmation" required>
         <input type="hidden" id="usernameInput" name="username" value="null">
         <br><br>
-        <input type="submit" value="Delete Account">
+        <input class="bttn" type="submit" value="Delete Account">
     </form>
 
     <div id="loginPopupContainer"></div>
@@ -104,7 +105,7 @@ $conn->close();
             console.log("Script executed on load");
         });
     </script>
-        <button onclick="window.history.back()">Go Back</button>
+        <button id="goBack"class="bttn" onclick="window.history.back()">Go Back</button>
         
 </body>
 </html>
