@@ -11,7 +11,6 @@
 </head>
 
 <body>
-<button class="backButton" title="Back to start" onclick="location.href='startseite_dozent.html';">Back</button>
 <input class="searchBar" type="text" id="searchTopic" onkeyup="searchTopic()" placeholder="Search for Topics">
 <input class="searchBar" type="text" id="searchTag" onkeyup="searchTag()" placeholder="Search for Tags"><br><br>
 <?php

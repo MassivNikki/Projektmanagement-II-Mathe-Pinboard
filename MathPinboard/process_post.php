@@ -175,7 +175,7 @@ echo "<b> Points: $pointsLoaded </b>";
     $phpCode .= "<p><strong>".$name."</strong></p>\n";
     $phpCode .= "<p class='commentText'>".$text."</p>\n";
     if (!empty($video)) {
-        $phpCode .= "<iframe src='".$video."'></iframe>\n";
+        $phpCode .= $video."\n";
         $tags .= ",Video";
     }
     if (!empty($videoFile)) {

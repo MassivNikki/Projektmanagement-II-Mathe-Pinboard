@@ -37,7 +37,7 @@
   border-radius: 8px;
   font-weight: 600;
 }
-.upvoteBtn button:hover {
+.upvoteBtn button:hover , .finishAction:hover{
   background: #029e43;
   transform: scale(1.05);
 }
@@ -50,13 +50,27 @@
   border-radius: 8px;
   font-weight: 600;
 }
-.downvoteBtn button:hover, .deleteBtn button:hover {
+.downvoteBtn button:hover, .deleteBtn button:hover, .resetFilter:hover {
   background: rgba(204, 46, 46);
   transform: scale(1.05);
 }
 
+.resetFilter{
+  width: 90px;
+  height: 30px;
+  color: #fff;
+  background: rgba(204, 46, 46, 0.596);
+  border: none;
+  border-radius: 3px;
+}
 
+/*Stil der Filtern,Kommentieren und Posten Knöpfe*/
+.finishAction{
+  background-color: rgb(70, 210, 100);
+  transition: background 0.2s, transform 0.2s;
+}
 /* Stil für b-Tags */
+
 .post b {
   background-color: #5d26a559;
   color: #fff;
@@ -69,8 +83,8 @@
   margin: 8px 4px;
   border-radius: 10px;
 }
-
 /* Stil für h3-Überschriften */
+
 .post h3 {
   background-color: #3498db75;
   padding: 14px;
@@ -81,31 +95,31 @@
   font-size: 24px;
   font-weight: 600;
 }
-
 /* Stil für strong-Tags */
+
 .post strong {
   display: block;
   max-width: 500px;
   margin: 10px auto;
 }
-
 /* Stil für p-Elemente */
+
 .post p {
   max-width: 90%;
   word-break: break-word;
   font-family: Arial,sans-serif;
 }
-
 /* Stil für Tags */
+
+
+
 .post .tags {
   background-color: #eee;
   border-radius: 5px;
   padding: 6px;
 }
-
-
-
 /* Stil für Kommentare */
+
 .comment {
   background-color: #f9f9f9;
   color: #444;
@@ -114,8 +128,8 @@
   border-radius: 8px;
   margin: 8px 0;
 }
-
 /* Stil für Kommentartext */
+
 .commentText {
   background-color: #f2f2f2;
   border: 1px solid #333;
@@ -126,21 +140,10 @@
   font-family: Arial,sans-serif;
 
 }
-
 /* Allgemeine Stiländerungen für Formulare */
+
 form {
   margin: 20px 0;
-}
-
-/* Stil für Formular-Submit-Buttons */
-form button[type="submit"] {
-  width: 160px;
-  height: 50px;
-  font-weight: 600;
-  border-radius: 10px;
-  border-color:rgba(255, 255, 255, 0);
-  color:white;
-  font-size: 18px;
 }
 
 /* Stil für Datei-Upload-Input */
@@ -156,8 +159,19 @@ form input[type="file"] {
 
 
 }
+/* Stil für Formular-Submit-Buttons */
 
+form button[type="submit"] {
+  width: 160px;
+  height: 50px;
+  font-weight: 600;
+  border-radius: 10px;
+  border-color:rgba(255, 255, 255, 0);
+  color:white;
+  font-size: 18px;
+}
 /* Stil für Texteingabe-Felder */
+
 form input[type="text"],
 form textarea {
   background-color: #f5f5f5;
@@ -169,7 +183,7 @@ form textarea {
   width: 450px;
   margin: 4px;
   margin-bottom: 30px;
- 
+
 }
 
 ::placeholder {
@@ -177,10 +191,9 @@ form textarea {
 }
 
 /* Stil für Video- und Bild-Elemente */
-video,
-iframe,
 img {
-  width: 100%;
+  max-width: 100%;
+  max-height: 50%;
 }
 
 /* Stil für Dateiliste */
@@ -250,8 +263,6 @@ label {
   padding:5px 5px ;
   box-shadow: 0 5px 0px rgba(0, 0, 0, 0.2);
 
-
-
 }
 
 /* Zusätzliche Stile für bestimmte Elemente */
@@ -265,17 +276,15 @@ label {
 }
 
 video, iframe {
-  width: 100%;
-}
-
-img {
-  width: 100%;
+  max-width: 100%;
+  max-height: 50%;
 }
 
 .filesDiv {
   display: flex;
   flex-wrap: wrap;
 }
+
 
 /* Stil für Upvote, Downvote und Löschen-Buttons */
 

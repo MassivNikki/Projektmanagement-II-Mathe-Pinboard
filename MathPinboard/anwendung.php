@@ -29,7 +29,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             exit();
         } else {
             $commentData = array(
-
                 "name" => $name,
                 "comment" => $comment,
                 "created_at" => date("Y-m-d H:i:s")
@@ -61,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header('Location: anwendung.php');
         }
     }
-    if ($_POST["type"] == "filter") {
+    if ($_POST["type"] == "filter" && $_POST["tags"] != "") {
 
         $filterType = $_POST["orOrAnd"];
 
@@ -137,13 +136,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 <body>
 <div class="topicName"><h1>Placeholder</h1></div>
-<h2>Post erstellen</h2>
+<h2>Create post</h2>
 
 <!-- Post submission form -->
 <form method="POST" action="process_post.php" enctype="multipart/form-data">
     <div class="filesDiv">
             <input type="hidden" name="name" id="postname" value="null" required>
-        <div><label for="text">Überschrift:</label><br>
+        <div><label for="text">Caption:</label><br>
             <input type="text" name="header" required>
         </div>
     </div>
@@ -154,19 +153,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <br>
     <div class="filesDiv">
         <div>
-            <label for="video">Video(mp4):</label><br>
-            <input type="text" name="video" placeholder="Link des videos"></div>
+            <label for="video">Video(Youtube):</label><br>
+            <input type="text" name="video" placeholder="Embed Link of the videos"></div>
         <div>
             <label for="picture">Picture:</label><br>
-            <input type="text" name="pictureLink" placeholder="Link des Bildes">
+            <input type="text" name="pictureLink" placeholder="Link of the picture">
         </div>
     </div>
 
 
     <label for="text">Tags:</label><br>
-    <textarea name="tags" placeholder="hier tags einfügen. Mit Komma Trennen. z.b. Tag1,Tag2,Tag3"></textarea><br>
+    <textarea name="tags" placeholder="add tags here. Separate with commas. e.g. Tag1,Tag2,Tag3"></textarea><br>
 
-    <button type="submit">Posten</button>
+    <button type="submit" class="finishAction">Post</button>
 </form>
 
 <!--Filter form -->
@@ -175,15 +174,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <form method="POST">
         <label for="tags">Desired Tags:</label><br>
         <input type="hidden" name="type" value="filter">
-        <input type="text" name="tags" id="tags" placeholder="Enter tags separated by commas" required><br>
+        <input type="text" name="tags" id="tags" placeholder="Enter tags separated by commas"><br>
         <label>Filtertype:</label><br>
-        <label for="Or" style="width: 50px; padding-left: 2px">Oder</label>
+        <label for="Or" style="width: 30px; padding-left: 2px">Or</label>
         <input type="radio" name="orOrAnd" id="Or" value="or" checked="checked" required>
-        <label for="And" style="width: 40px;padding-left: 2px">Und</label>
+        <label for="And" style="width: 40px;padding-left: 2px">And</label>
         <input type="radio" name="orOrAnd" id="And" value="and" required><br>
-        <button type="submit">Filtern</button>
+        <button type="submit" class="finishAction">Filter</button>
         <br>
-        <b>Momentane Filter: </b>
+        <b>Current filters: </b>
         <br>
         <?php if (isset($desiredTags)) {
             //this is here to show your filtered tags
@@ -192,8 +191,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 echo "#" . $tag . " ";
             }
         } ?>
-        <a href="anwendung.php">
-            <button>Filter zurücksetzen</button>
+        <a href="anwendung.php" >
+            <button class="resetFilter">reset filter</button>
         </a>
     </form>
 
@@ -243,7 +242,7 @@ if (count($phpFiles) != 0) {
 
 ?>
 
-<h2>Kommentarsektion</h2>
+<h2>Comment section</h2>
 <div class="commentInput">
     <!-- Comment form -->
     <form method="POST" action="<?php echo $_SERVER['PHP_SELF']; ?>">
@@ -254,12 +253,12 @@ if (count($phpFiles) != 0) {
 
         <input type="hidden" name="type" value="comment">
 
-        <button type="submit">Kommentieren</button>
+        <button type="submit" class="finishAction">Post comment</button>
     </form>
 </div>
 
 <!-- Display comments -->
-<h2>Kommentare:</h2>
+<h2>Comments:</h2>
 <?php
 $commentFiles = glob('./comments/comments-*.xml');
 
@@ -300,7 +299,7 @@ if (count($commentFiles) === 0) {
         });
     });
 </script>
-<a href="../../../userManagement/logout.html" style="z-index: 4; position: fixed; top: 10px; right: 10px; text-decoration: none; background-color: #007bff; color: #fff; padding: 10px; border-radius: 5px;">Account</a>
+<a href="../../../userManagement/logout.html" style="z-index: 4; position: fixed; top: 10px; right: 10px; text-decoration: none; background-color: #007bff; color: #fff; padding: 10px; border-radius: 5px;font-family: Arial, sans-serif;">Account</a>
 <!-- Yeah, this button kinda hurts your soul, buuuut doing it this way makes copy-pasting easy -->
 
     <script>
@@ -318,26 +317,27 @@ if (count($commentFiles) === 0) {
     }
     var buttonElement = document.createElement("button");
     
-
     // Set the text content of the link
-    linkElement.textContent = "Back to topics";
-
+        linkElement.textContent = "Back to topics";
+        linkElement.style.color = "#fff";
     // Append the link to the button
-    buttonElement.appendChild(linkElement);
+        buttonElement.appendChild(linkElement);
 
+        let cssButton = buttonElement.style;
     // Put the button top left
-    buttonElement.style.position = "fixed";
-    buttonElement.style.top = "10px";
-    buttonElement.style.left = "10px";
-    buttonElement.style.zIndex = "1000";
+    cssButton.position = "fixed";
+        cssButton.top = "10px";
+        cssButton.left = "10px";
+        cssButton.zIndex = "3";
 
-    //Button doesnt accept style from stylesheet for whatever reason
-    buttonElement.style.background = "#2ecc71";
-    buttonElement.style.border = "none";
-    buttonElement.style.color = "#fff";
-    buttonElement.style.padding = " 10px 15px";
-    buttonElement.style.borderRadius = "8px";
-    buttonElement.style.fontWeight = "600";
+    //Button doesn't accept style from stylesheet for whatever reason
+        cssButton.background = "#dc3f45";
+        cssButton.border = "none";
+        cssButton.padding = " 10px 15px";
+        cssButton.borderRadius = "5px";
+        cssButton.fontWeight = "600";
+        cssButton.height = "35px";
+
     
 
     // Append the button to the body or another element
