@@ -302,5 +302,48 @@ if (count($commentFiles) === 0) {
 </script>
 <a href="../../../userManagement/logout.html" style="z-index: 4; position: fixed; top: 10px; right: 10px; text-decoration: none; background-color: #007bff; color: #fff; padding: 10px; border-radius: 5px;">Account</a>
 <!-- Yeah, this button kinda hurts your soul, buuuut doing it this way makes copy-pasting easy -->
+
+    <script>
+    // Wait for the autoCheckToken to complete before checking the role
+    loginModule.autoCheckToken().then(() => {
+        $role = loginModule.getRole();
+        //make a link
+        var linkElement = document.createElement("a");
+        //based on role set the link
+        if ($role === "admin" || $role === "moderator") {
+        linkElement.href = "../../../topics_dozent.php";
+     
+    }else{
+        linkElement.href = "../../../topics_student.php";
+    }
+    var buttonElement = document.createElement("button");
+    
+
+    // Set the text content of the link
+    linkElement.textContent = "Back to topics";
+
+    // Append the link to the button
+    buttonElement.appendChild(linkElement);
+
+    // Put the button top left
+    buttonElement.style.position = "fixed";
+    buttonElement.style.top = "10px";
+    buttonElement.style.left = "10px";
+    buttonElement.style.zIndex = "1000";
+
+    //Button doesnt accept style from stylesheet for whatever reason
+    buttonElement.style.background = "#2ecc71";
+    buttonElement.style.border = "none";
+    buttonElement.style.color = "#fff";
+    buttonElement.style.padding = " 10px 15px";
+    buttonElement.style.borderRadius = "8px";
+    buttonElement.style.fontWeight = "600";
+    
+
+    // Append the button to the body or another element
+    document.body.appendChild(buttonElement);   
+    });
+
+    </script>
 </body>
 </html>
